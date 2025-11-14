@@ -1,0 +1,65 @@
+[gd_scene load_steps=5 format=3 uid="uid://dmhh7h3xot1lw"]
+
+[ext_resource type="Texture2D" uid="uid://bs6j3op4sriym" path="res://icon.svg" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://b6hjdys0r6luq" path="res://player.gd" id="1_onrkg"]
+[ext_resource type="PackedScene" uid="uid://b8kt0rrxbr81x" path="res://bullets.tscn" id="2_i3pqv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
+size = Vector2(126, 131)
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+script = ExtResource("1_onrkg")
+health = 11
+ammo = 20
+speed = 300.0
+bullet_scene = ExtResource("2_i3pqv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_4flbx")
+
+[node name="Container" type="VBoxContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -177.0
+offset_right = 20.0
+offset_bottom = -73.0
+grow_horizontal = 2
+grow_vertical = 0
+metadata/_edit_group_ = true
+
+[node name="AttackCDLabel" type="Label" parent="Container"]
+layout_mode = 2
+text = "AttackCD"
+horizontal_alignment = 1
+
+[node name="StateLabel" type="Label" parent="Container"]
+layout_mode = 2
+text = "State"
+horizontal_alignment = 1
+
+[node name="HealthLabel" type="Label" parent="Container"]
+layout_mode = 2
+text = "Health"
+horizontal_alignment = 1
+
+[node name="AmmoLabel" type="Label" parent="Container"]
+layout_mode = 2
+text = "Ammo"
+horizontal_alignment = 1
+
+[node name="PointsLabel" type="Label" parent="Container"]
+layout_mode = 2
+text = "Points"
+horizontal_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_onrkg")
+
+[node name="AttackTimer" type="Timer" parent="."]
+process_callback = 0
+one_shot = true

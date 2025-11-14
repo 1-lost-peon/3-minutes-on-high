@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckitdvv62o4s5"]
+
+[ext_resource type="Script" uid="uid://dyu7iat300pwl" path="res://enemy.gd" id="1_4gyqm"]
+[ext_resource type="Texture2D" uid="uid://bs6j3op4sriym" path="res://icon.svg" id="2_qi2p4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4gyqm"]
+size = Vector2(70, 96)
+
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 3
+script = ExtResource("1_4gyqm")
+speed = 200.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0.00999999, 0.00999999, 1)
+scale = Vector2(3, 3)
+texture = ExtResource("2_qi2p4")
+region_enabled = true
+region_rect = Rect2(32, 48, 24, 32)
+
+[node name="Container" type="VBoxContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -26.0
+offset_top = -131.0
+offset_right = 26.0
+offset_bottom = -51.0
+grow_horizontal = 2
+grow_vertical = 0
+metadata/_edit_group_ = true
+
+[node name="StateLabel" type="Label" parent="Container"]
+layout_mode = 2
+text = "State"
+horizontal_alignment = 1
+
+[node name="HealthLabel" type="Label" parent="Container"]
+layout_mode = 2
+text = "Health"
+horizontal_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_4gyqm")
