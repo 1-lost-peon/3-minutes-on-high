@@ -1,0 +1,151 @@
+[gd_scene load_steps=5 format=3 uid="uid://dbkhw8j2t2t0b"]
+
+[ext_resource type="Script" uid="uid://cg2adguynljgu" path="res://main menu/main_menu.gd" id="1_cok42"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_clurl"]
+bg_color = Color(0.10980392, 0.15294118, 0.20784314, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cok42"]
+bg_color = Color(0.252, 0.42, 0.252, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8f8xy"]
+bg_color = Color(0.45, 0.1935, 0.1935, 1)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cok42")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.24313726, 0.24313726, 0.2627451, 1)
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 470.0
+offset_top = 58.0
+offset_right = 673.0
+offset_bottom = 151.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_clurl")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 30.0
+offset_right = 195.0
+offset_bottom = 64.0
+theme_override_colors/font_color = Color(0, 1, 1, 1)
+theme_override_font_sizes/font_size = 21
+text = "3 Minutes on High"
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 474.0
+offset_top = 170.0
+offset_right = 667.0
+offset_bottom = 418.0
+columns = 3
+
+[node name="Button" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0.02745098, 0.8, 0.8117647, 1)
+text = "1"
+
+[node name="Button2" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0.02745098, 0.8, 0.8117647, 1)
+text = "2"
+
+[node name="Button3" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0.02745098, 0.8, 0.8117647, 1)
+text = "3"
+
+[node name="Button4" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0.02745098, 0.8, 0.8117647, 1)
+text = "4"
+
+[node name="Button5" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0.02745098, 0.8, 0.8117647, 1)
+text = "5"
+
+[node name="Button6" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0.02745098, 0.8, 0.8117647, 1)
+text = "6"
+
+[node name="Button7" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0.02745098, 0.8, 0.8117647, 1)
+text = "7"
+
+[node name="Button8" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0.02745098, 0.8, 0.8117647, 1)
+text = "8"
+
+[node name="Button9" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0.02745098, 0.8, 0.8117647, 1)
+text = "9"
+
+[node name="Button10" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0.02745098, 0.8, 0.8117647, 1)
+text = "0"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 476.0
+offset_top = 483.0
+offset_right = 669.0
+offset_bottom = 532.0
+
+[node name="StartButton" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_cok42")
+text = "Start"
+
+[node name="QuitButton" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_8f8xy")
+text = "Quit"
