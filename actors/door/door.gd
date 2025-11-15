@@ -5,13 +5,13 @@ class_name Door
 
 @export var is_barricaded : bool = false
 @export var is_opened : bool = false
-@export var barricate_scene : PackedScene = null
+@export var barricade_scene : PackedScene = null
 
 ## Helper area to check if player is inside.
 @onready var _player_detection_area_2d: Area2D = $PlayerDetectionArea2D
 
-## Reference to the barricate if any exist at the moment.
-var barricate : Node2D = null
+## Reference to the barricade if any exist at the moment.
+var barricade : Node2D = null
 
 func _physics_process(_delta: float) -> void:
 	_handle_interaction_visual()
@@ -28,14 +28,14 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	if event.is_action_pressed("barricade"):
 		if not is_barricaded:
-			set_barricate()
+			set_barricade()
 
-## Sets up barricate forcefully, make sure to check status first.
-func set_barricate() -> void:
-	# Set up barricate here.
+## Sets up barricade forcefully, make sure to check status first.
+func set_barricade() -> void:
+	# Set up barricade here.
 	is_barricaded = true
-	barricate = barricate_scene.instantiate() as Barricate
-	add_child(barricate)
+	barricade = barricade_scene.instantiate() as Barricade
+	add_child(barricade)
 
 ## Closes the door.
 func close() -> void:
