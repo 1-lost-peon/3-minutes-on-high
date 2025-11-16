@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6q33js31kocx"
-path="res://.godot/imported/barricade.png-c7d6d1bcdb461d3e6b3d5f81467dc594.ctex"
+uid="uid://3vodmmvrhrqi"
+path="res://.godot/imported/character_sprite.png-68ddf9a4cce3d9117ac2e37cdc22887e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://actors/barricade/barricade.png"
-dest_files=["res://.godot/imported/barricade.png-c7d6d1bcdb461d3e6b3d5f81467dc594.ctex"]
+source_file="res://assets/sprites/character_sprite.png"
+dest_files=["res://.godot/imported/character_sprite.png-68ddf9a4cce3d9117ac2e37cdc22887e.ctex"]
 
 [params]
 

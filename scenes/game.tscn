@@ -1,10 +1,10 @@
 [gd_scene load_steps=13 format=4 uid="uid://bfdi7ko7mp5b8"]
 
-[ext_resource type="Texture2D" uid="uid://bxwnwa4p6nl0u" path="res://assets/level_sprites.png" id="1_uwrxv"]
-[ext_resource type="PackedScene" uid="uid://dmhh7h3xot1lw" path="res://actors/player/player.tscn" id="2_yqjtg"]
-[ext_resource type="PackedScene" uid="uid://ckitdvv62o4s5" path="res://actors/enemy/enemy.tscn" id="3_iywne"]
-[ext_resource type="Texture2D" uid="uid://dv83ksu0bnc8c" path="res://actors/door/door.png" id="4_p57ef"]
-[ext_resource type="Texture2D" uid="uid://c6q33js31kocx" path="res://actors/barricade/barricade.png" id="5_u5sy4"]
+[ext_resource type="Texture2D" uid="uid://bxwnwa4p6nl0u" path="res://assets/sprites/level_sprites.png" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://dmhh7h3xot1lw" path="res://scenes/player.tscn" id="2_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://ckitdvv62o4s5" path="res://scenes/enemy.tscn" id="3_iywne"]
+[ext_resource type="Texture2D" uid="uid://dv83ksu0bnc8c" path="res://assets/sprites/door.png" id="4_p57ef"]
+[ext_resource type="Texture2D" uid="uid://c6q33js31kocx" path="res://assets/sprites/barricade.png" id="5_u5sy4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fc0e3"]
 texture = ExtResource("1_uwrxv")
@@ -129,7 +129,6 @@ tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_fc0e3")
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_e2o6t"]
-load_path = "res://.godot/imported/level_sprites.png-cc5eb889741a2ab09c1d67e008fe6134.ctex"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e2o6t"]
 texture = SubResource("CompressedTexture2D_e2o6t")
