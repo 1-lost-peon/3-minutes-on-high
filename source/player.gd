@@ -1,3 +1,4 @@
+@icon("uid://bk3qswx4ngrin")
 class_name Player extends CharacterBody2D
 
 enum PlayerState {
@@ -6,40 +7,22 @@ enum PlayerState {
 	DEAD
 }
 
-@export var health : int = 10 :
-	set(value):
-		health = value
-		if health_label == null: return
-		health_label.text = "Health: %s"  % str(value)
-
-@export var ammo: int = 5 :
-	set(value):
-		ammo = value
-		if ammo_label == null: return
-		ammo_label.text = "Ammo: %s"  % str(value)
-
-@export var points: int = 5 :
-	set(value):
-		points = value
-		if points_label == null: return
-		points_label.text = "Points: %s"  % str(value)
-		
+@export var max_hp : float = 10.0
+@export var ammo: int = 5
+@export var bullet_scene : PackedScene
+@export var points: int = 5
 @export_range(1, 1000, 0.1)  var speed : float 
-
 @export_range(0.0, 1.0) var shake_strength : float = 0.2
 
-
 @onready var state_label: Label = $Container/StateLabel
-@onready var health_label: Label = $Container/HealthLabel
-@onready var ammo_label: Label = $Container/AmmoLabel
-@onready var points_label: Label = $Container/PointsLabel
 @onready var attack_timer: Timer = $AttackTimer
 @onready var attack_cd_label: Label = $Container/AttackCDLabel
 
+@onready var hp : float = self.max_hp
 
 func _ready() -> void:
 	ammo = ammo
-	health = health
+	max_hp = max_hp
 	current_state = current_state
 	points = points
 
@@ -50,18 +33,16 @@ var current_state: PlayerState = PlayerState.IDLE:
 func change_state(new_state):
 	print("Current: %s, new: %s" % [current_state, new_state])
 	state_label.text = "State: %s"  % str(PlayerState.keys()[new_state])
-
-	current_state = new_state
 	
-var is_attacking := false
-@export var bullet_scene : PackedScene
+	current_state = new_state
+
 func attack(attack_direction:Vector2):
 	var bullet = bullet_scene.instantiate()
 	add_sibling(bullet)
 	bullet.global_position = global_position
 	bullet.direction = attack_direction
 	ammo -= 1
-	$AttackTimer.start()
+	attack_timer.start()
 
 
 func _physics_process(delta: float) -> void:
@@ -83,7 +64,7 @@ func _physics_process(delta: float) -> void:
 		current_state != PlayerState.DEAD and
 		input_attack_direction != Vector2.ZERO and
 		ammo > 0 and
-		$AttackTimer.is_stopped()
+		attack_timer.is_stopped()
 	)
 	if can_attack:
 		attack(input_attack_direction)
@@ -93,10 +74,10 @@ func take_damage(value):
 	if current_state == PlayerState.DEAD:
 		return
 	
-	health -= value
+	hp -= value
 	CameraAgent.add_trauma(value * shake_strength)
 	
-	if health <= 0:
+	if hp <= 0:
 		current_state = PlayerState.DEAD
 
 func _idle_update(_delta):

@@ -2,9 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://bxwnwa4p6nl0u" path="res://assets/sprites/level_sprites.png" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://dmhh7h3xot1lw" path="res://scenes/player.tscn" id="2_yqjtg"]
-[ext_resource type="PackedScene" uid="uid://ckitdvv62o4s5" path="res://scenes/enemy.tscn" id="3_iywne"]
-[ext_resource type="Texture2D" uid="uid://dv83ksu0bnc8c" path="res://assets/sprites/door.png" id="4_p57ef"]
 [ext_resource type="Texture2D" uid="uid://c6q33js31kocx" path="res://assets/sprites/barricade.png" id="5_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://d0qv3i4oxed4y" path="res://scenes/hud_canvas_layer.tscn" id="6_p57ef"]
+[ext_resource type="PackedScene" uid="uid://vwbatgofwwki" path="res://scenes/door.tscn" id="6_u5sy4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fc0e3"]
 texture = ExtResource("1_uwrxv")
@@ -1182,13 +1182,6 @@ tile_set = SubResource("TileSet_fc0e3")
 [node name="Player" parent="." instance=ExtResource("2_yqjtg")]
 position = Vector2(392, 307)
 
-[node name="Enemy" parent="." instance=ExtResource("3_iywne")]
-position = Vector2(590, 183)
-
-[node name="Door" type="Sprite2D" parent="."]
-position = Vector2(144, 736)
-texture = ExtResource("4_p57ef")
-
 [node name="Barricade3" type="Sprite2D" parent="."]
 position = Vector2(488, 30)
 texture = ExtResource("5_u5sy4")
@@ -1200,3 +1193,33 @@ texture = ExtResource("5_u5sy4")
 [node name="Barricade" type="Sprite2D" parent="."]
 position = Vector2(442, 30)
 texture = ExtResource("5_u5sy4")
+
+[node name="HUDCanvasLayer" parent="." instance=ExtResource("6_p57ef")]
+
+[node name="Door" parent="." instance=ExtResource("6_u5sy4")]
+position = Vector2(144, 736)
+barricade_cost = 5
+
+[node name="Door2" parent="." instance=ExtResource("6_u5sy4")]
+position = Vector2(464, 1152)
+barricade_cost = 5
+
+[node name="Door3" parent="." instance=ExtResource("6_u5sy4")]
+position = Vector2(944, 1152)
+barricade_cost = 5
+
+[node name="Door4" parent="." instance=ExtResource("6_u5sy4")]
+position = Vector2(1680, 736)
+barricade_cost = 5
+
+[node name="Door5" parent="." instance=ExtResource("6_u5sy4")]
+position = Vector2(2320, 736)
+barricade_cost = 5
+
+[node name="Door6" parent="." instance=ExtResource("6_u5sy4")]
+position = Vector2(2672, 1344)
+barricade_cost = 5
+
+[node name="Door7" parent="." instance=ExtResource("6_u5sy4")]
+position = Vector2(2032, 1632)
+barricade_cost = 5

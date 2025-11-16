@@ -1,3 +1,4 @@
+@icon("uid://buurifc5jfvyc")
 extends CharacterBody2D
 class_name Enemy
 
