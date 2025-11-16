@@ -64,3 +64,8 @@ shape = SubResource("RectangleShape2D_onrkg")
 [node name="AttackTimer" type="Timer" parent="."]
 process_callback = 0
 one_shot = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+process_callback = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 3.0

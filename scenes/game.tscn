@@ -1183,7 +1183,7 @@ tile_set = SubResource("TileSet_fc0e3")
 position = Vector2(392, 307)
 
 [node name="Enemy" parent="." instance=ExtResource("3_iywne")]
-position = Vector2(623, 16)
+position = Vector2(590, 183)
 
 [node name="Door" type="Sprite2D" parent="."]
 position = Vector2(144, 736)

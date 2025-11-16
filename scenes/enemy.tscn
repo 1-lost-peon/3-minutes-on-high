@@ -12,7 +12,7 @@ motion_mode = 1
 script = ExtResource("1_4gyqm")
 speed = 200.0
 
-[node name="Enemy" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_r6xaq")
 
 [node name="Container" type="VBoxContainer" parent="."]

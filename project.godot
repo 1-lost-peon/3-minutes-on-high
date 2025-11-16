@@ -11,8 +11,12 @@ config_version=5
 [application]
 
 config/name="3 Minutes on High"
-run/main_scene="uid://bxtow6wbkfncf"
+run/main_scene="uid://bfdi7ko7mp5b8"
 config/features=PackedStringArray("4.5", "GL Compatibility")
+
+[autoload]
+
+CameraAgent="*res://source/singleton/camera_agent.gd"
 
 [global_group]
 

@@ -6,15 +6,6 @@ enum PlayerState {
 	DEAD
 }
 
-@onready var state_label: Label = $Container/StateLabel
-@onready var health_label: Label = $Container/HealthLabel
-@onready var ammo_label: Label = $Container/AmmoLabel
-@onready var points_label: Label = $Container/PointsLabel
-@onready var attack_timer: Timer = $AttackTimer
-@onready var attack_cd_label: Label = $Container/AttackCDLabel
-
-
-
 @export var health : int = 10 :
 	set(value):
 		health = value
@@ -33,7 +24,18 @@ enum PlayerState {
 		if points_label == null: return
 		points_label.text = "Points: %s"  % str(value)
 		
-@export_range(1, 1000, 0.1)  var speed:float 
+@export_range(1, 1000, 0.1)  var speed : float 
+
+@export_range(0.0, 1.0) var shake_strength : float = 0.2
+
+
+@onready var state_label: Label = $Container/StateLabel
+@onready var health_label: Label = $Container/HealthLabel
+@onready var ammo_label: Label = $Container/AmmoLabel
+@onready var points_label: Label = $Container/PointsLabel
+@onready var attack_timer: Timer = $AttackTimer
+@onready var attack_cd_label: Label = $Container/AttackCDLabel
+
 
 func _ready() -> void:
 	ammo = ammo
@@ -85,14 +87,17 @@ func _physics_process(delta: float) -> void:
 	)
 	if can_attack:
 		attack(input_attack_direction)
+
 func take_damage(value):
 	
 	if current_state == PlayerState.DEAD:
 		return
-	health -= value
-	if health == 0:
-		current_state = PlayerState.DEAD
 	
+	health -= value
+	CameraAgent.add_trauma(value * shake_strength)
+	
+	if health <= 0:
+		current_state = PlayerState.DEAD
 
 func _idle_update(_delta):
 	var input_direction = Input.get_vector(&"move_left", &"move_right", &"move_up", &"move_down")
