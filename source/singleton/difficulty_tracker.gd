@@ -51,8 +51,6 @@ var _current_difficulty : Difficulty = Difficulty.EASY
 ## Repor crime thats been committed. This will contribute to the games difficulty level.
 func report_crime(crime_level : Crime) -> void:
 	
-	crime_committed.emit()
-	
 	match crime_level:
 		Crime.LITTLE:
 			_current_punishment += _little_crime_punishment
@@ -61,21 +59,27 @@ func report_crime(crime_level : Crime) -> void:
 		Crime.BIG:
 			_current_punishment += _big_crime_punishment
 	
+	crime_committed.emit()
+	
 	# Increase the difficulty if threshold reached.
 	if _current_punishment >= _difficulty_threshold:
 		
 		# Increase the difficulty now.
 		match _current_difficulty:
 			Difficulty.EASY:
+				_current_punishment = 0
 				_current_difficulty = Difficulty.NORMAL
 				difficulty_increased.emit()
 			Difficulty.NORMAL:
+				_current_punishment = 0
 				_current_difficulty = Difficulty.HARD
 				difficulty_increased.emit()
 			Difficulty.HARD:
+				_current_punishment = 0
 				_current_difficulty = Difficulty.INSANE
 				difficulty_increased.emit()
 			Difficulty.INSANE:
+				_current_punishment = 0
 				_current_difficulty = Difficulty.LETHAL
 				difficulty_increased.emit()
 			Difficulty.LETHAL:
@@ -85,6 +89,10 @@ func report_crime(crime_level : Crime) -> void:
 ## Get the games current difficulty level.
 func get_difficulty() -> Difficulty:
 	return _current_difficulty
+
+## Get the current crime progress as %.
+func get_progress() -> float:
+	return _current_punishment as float / _difficulty_threshold as float * 100.0
 
 ## Reset the singleton to replay the game.
 func reset_difficulty() -> void:
