@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://67sdvcg4akt"]
+
+[ext_resource type="Script" uid="uid://cpavsa27u37bh" path="res://source/difficulty_visualizer.gd" id="1_x4qua"]
+[ext_resource type="Texture2D" uid="uid://bs6j3op4sriym" path="res://icon.svg" id="2_j0isu"]
+
+[node name="DifficultyVisualizer" type="CanvasLayer"]
+script = ExtResource("1_x4qua")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -230.0
+offset_bottom = 60.0
+grow_horizontal = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="DifficultyTextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("2_j0isu")
+
+[node name="CrimeProgressBar" type="ProgressBar" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+show_percentage = false
