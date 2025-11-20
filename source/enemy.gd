@@ -7,6 +7,7 @@ enum EnemyState {
 	DEAD,
 	ATTACK
 }
+@onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
 
 @onready var state_label: Label = $Container/StateLabel
 @onready var health_label: Label = $Container/HealthLabel
@@ -63,10 +64,16 @@ func _dead_update(_delta):
 func _walk_update(_delta):
 	if not _player_ref:
 		return
+	navigation_agent_2d.target_position = _player_ref.global_position
+	var next_path_position := navigation_agent_2d.get_next_path_position()
+	var direction = global_position.direction_to(next_path_position)
+	var new_velocity = direction * speed
 	
-	var direction = global_position.direction_to(_player_ref.global_position)
-	velocity = direction * speed
-	move_and_slide()
+	
+	if navigation_agent_2d.avoidance_enabled:
+		navigation_agent_2d.set_velocity(new_velocity)
+	else:
+		_on_navigation_agent_2d_velocity_computed(new_velocity)
 	
 	# If we are close to player change state to attack.
 	if (global_position - _player_ref.global_position).length() <= attack_range:
@@ -93,3 +100,7 @@ func _attack_update(_delta):
 func _damage_player() -> void:
 	if _player_ref:
 		_player_ref.take_damage(attack_damage)
+
+func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
+	velocity = safe_velocity
+	move_and_slide()
