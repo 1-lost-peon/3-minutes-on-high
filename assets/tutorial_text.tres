@@ -1,0 +1,9 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://8i8x3j7yjm73"]
+
+[ext_resource type="FontFile" uid="uid://cle5ju5lvn31d" path="res://assets/font/Cyberphont 2.0.ttf" id="1_nlqkp"]
+
+[resource]
+default_font = ExtResource("1_nlqkp")
+default_font_size = 16
+Label/colors/font_color = Color(1, 1, 1, 0.9098039)
+Label/colors/font_shadow_color = Color(0, 0, 0, 1)
