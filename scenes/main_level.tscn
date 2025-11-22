@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://c3fwmcj1en1ph"]
+[gd_scene load_steps=9 format=4 uid="uid://c3fwmcj1en1ph"]
 
 [ext_resource type="TileSet" uid="uid://cnywmhyx0drw0" path="res://scenes/main_level_tileset.tres" id="1_qmak7"]
 [ext_resource type="PackedScene" uid="uid://dmhh7h3xot1lw" path="res://scenes/player.tscn" id="2_bq26l"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ly5sap5xuww0" path="res://scenes/tutorial_text.tscn" id="5_iqu8w"]
 [ext_resource type="Texture2D" uid="uid://dykqxiixfbycm" path="res://assets/sprites/window_top.png" id="6_u2c82"]
 [ext_resource type="Texture2D" uid="uid://ccpxwyssmr22y" path="res://assets/sprites/window_normal.png" id="7_k5pu3"]
+[ext_resource type="AudioStream" uid="uid://ddqo41yfxpw2d" path="res://assets/audio/song.mp3" id="8_k5pu3"]
 
 [node name="MainLevel" type="Node2D"]
 
@@ -91,3 +92,7 @@ texture = ExtResource("6_u2c82")
 [node name="WindowNormal" type="Sprite2D" parent="WindowTop3"]
 position = Vector2(0, 21)
 texture = ExtResource("7_k5pu3")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_k5pu3")
+autoplay = true
