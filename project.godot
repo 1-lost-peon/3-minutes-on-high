@@ -18,6 +18,11 @@ config/features=PackedStringArray("4.5", "GL Compatibility")
 
 CameraAgent="*res://source/singleton/camera_agent.gd"
 
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+
 [global_group]
 
 player=""
