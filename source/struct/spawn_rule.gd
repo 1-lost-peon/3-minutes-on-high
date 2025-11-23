@@ -77,5 +77,90 @@ func is_working_on_difficulty(difficulty_level : DifficultyTracker.Difficulty) -
 	else:
 		return false
 
+## Get multiplied max living entity on given difficulty level.
+## Returns -1 if not working on that difficuly level.
 func get_max_living_entity_on_difficulty(difficulty_level : DifficultyTracker.Difficulty) -> int:
 	
+	if not is_working_on_difficulty(difficulty_level):
+		return -1
+	
+	match difficulty_level:
+		DifficultyTracker.Difficulty.EASY:
+			return max_living_entity * easy_max_living_entity
+		DifficultyTracker.Difficulty.NORMAL:
+			return max_living_entity * normal_max_living_entity
+		DifficultyTracker.Difficulty.HARD:
+			return max_living_entity * hard_max_living_entity
+		DifficultyTracker.Difficulty.INSANE:
+			return max_living_entity * insane_max_living_entity
+		DifficultyTracker.Difficulty.LETHAL:
+			return max_living_entity * lethal_max_living_entity
+	
+	# This shouldnt really happen but anyway return -1
+	return -1
+
+## Get multiplied max spawn on given difficulty level.
+## Returns -1 if not working on that difficuly level.
+func get_max_spawn_on_difficulty(difficulty_level : DifficultyTracker.Difficulty) -> int:
+	
+	if not is_working_on_difficulty(difficulty_level):
+		return -1
+	
+	match difficulty_level:
+		DifficultyTracker.Difficulty.EASY:
+			return max_living_entity * easy_max_living_entity
+		DifficultyTracker.Difficulty.NORMAL:
+			return max_living_entity * normal_max_living_entity
+		DifficultyTracker.Difficulty.HARD:
+			return max_living_entity * hard_max_living_entity
+		DifficultyTracker.Difficulty.INSANE:
+			return max_living_entity * insane_max_living_entity
+		DifficultyTracker.Difficulty.LETHAL:
+			return max_living_entity * lethal_max_living_entity
+	
+	# This shouldnt really happen but anyway return -1
+	return -1
+
+## Get multiplied spawn count on given difficulty level.
+## Returns -1 if not working on that difficuly level.
+func get_spawn_count_on_difficulty(difficulty_level : DifficultyTracker.Difficulty) -> int:
+	
+	if not is_working_on_difficulty(difficulty_level):
+		return -1
+	
+	match difficulty_level:
+		DifficultyTracker.Difficulty.EASY:
+			return spawn_count * easy_spawn_count_scale
+		DifficultyTracker.Difficulty.NORMAL:
+			return spawn_count * normal_spawn_count_scale
+		DifficultyTracker.Difficulty.HARD:
+			return spawn_count * hard_spawn_count_scale
+		DifficultyTracker.Difficulty.INSANE:
+			return spawn_count * insane_spawn_count_scale
+		DifficultyTracker.Difficulty.LETHAL:
+			return spawn_count * lethal_spawn_count_scale
+	
+	# This shouldnt really happen but anyway return -1
+	return -1
+
+## Get multiplied cooldown on given difficulty level.
+## Returns -1.0 if not working on that difficuly level.
+func get_cooldown_on_difficulty(difficulty_level : DifficultyTracker.Difficulty) -> float:
+	
+	if not is_working_on_difficulty(difficulty_level):
+		return -1.0
+	
+	match difficulty_level:
+		DifficultyTracker.Difficulty.EASY:
+			return cooldown_seconds * easy_cooldown_scale
+		DifficultyTracker.Difficulty.NORMAL:
+			return cooldown_seconds * normal_cooldown_scale
+		DifficultyTracker.Difficulty.HARD:
+			return cooldown_seconds * hard_cooldown_scale
+		DifficultyTracker.Difficulty.INSANE:
+			return cooldown_seconds * insane_cooldown_scale
+		DifficultyTracker.Difficulty.LETHAL:
+			return cooldown_seconds * lethal_cooldown_scale
+	
+	# This shouldnt really happen but anyway return -1
+	return -1.0
