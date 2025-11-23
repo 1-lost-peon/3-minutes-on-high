@@ -10,16 +10,18 @@ class_name SpawnRule
 @export var min_difficulty_level : DifficultyTracker.Difficulty = DifficultyTracker.Difficulty.EASY
 ## Maximum difficulty level the spawn will work.
 @export var max_difficulty_level : DifficultyTracker.Difficulty = DifficultyTracker.Difficulty.LETHAL
-## Maximum number of living entity for the spawn.
-@export var max_living_entity : int = 1
+## Maximum number of living entity for the spawn, leave it as 0 if not specified.
+@export var max_living_entity : int = 0
 ## Scene to spawn.
 @export var spawn_scene : PackedScene = null
 ## Spawn cooldown in seconds.
 @export var cooldown_seconds : float = 10.0
-## Maximum number of spawns for this rule, leave it as -1 if not specified.
-@export var max_spawns : int = -1
+## Maximum number of total spawns for this rule, leave it as 0 if not specified.
+@export var total_max_spawns : int = 0
 ## Spawn count for the each spawn.
 @export var spawn_count : int = 1
+## Maximum offset for the spawns, will be picked random in given range.
+@export var position_offset_range : Vector2 = Vector2(50,50)
 
 
 @export_group("Cooldown Scales")
@@ -46,17 +48,17 @@ class_name SpawnRule
 ## Scale will multiply spawn_count in matching difficulty level.
 @export var lethal_spawn_count_scale : int = 1
 
-@export_group("Max Spawns Scales")
-## Scale will multiply max_spawns in matching difficulty level.
-@export var easy_max_spawn_scale : int = 1
-## Scale will multiply max_spawns in matching difficulty level.
-@export var normal_max_spawn_scale : int = 1
-## Scale will multiply max_spawns in matching difficulty level.
-@export var hard_max_spawn_scale : int = 1
-## Scale will multiply max_spawns in matching difficulty level.
-@export var insane_max_spawn_scale : int = 1
-## Scale will multiply max_spawns in matching difficulty level.
-@export var lethal_max_spawn_scale : int = 1
+@export_group("Total Max Spawns Scales")
+## Scale will multiply total_max_spawns in matching difficulty level.
+@export var easy_total_max_spawn_scale : int = 1
+## Scale will multiply total_max_spawns in matching difficulty level.
+@export var normal_total_max_spawn_scale : int = 1
+## Scale will multiply total_max_spawns in matching difficulty level.
+@export var hard_total_max_spawn_scale : int = 1
+## Scale will multiply total_max_spawns in matching difficulty level.
+@export var insane_total_max_spawn_scale : int = 1
+## Scale will multiply total_max_spawns in matching difficulty level.
+@export var lethal_total_max_spawn_scale : int = 1
 
 @export_group("Max Living Entity Scales")
 ## Scale will multiply max_living_entity in matching difficulty level.
@@ -79,10 +81,14 @@ func is_working_on_difficulty(difficulty_level : DifficultyTracker.Difficulty) -
 
 ## Get multiplied max living entity on given difficulty level.
 ## Returns -1 if not working on that difficuly level.
+## Returns 0 if not specified.
 func get_max_living_entity_on_difficulty(difficulty_level : DifficultyTracker.Difficulty) -> int:
 	
 	if not is_working_on_difficulty(difficulty_level):
 		return -1
+	
+	if max_living_entity == 0:
+		return 0
 	
 	match difficulty_level:
 		DifficultyTracker.Difficulty.EASY:
@@ -101,22 +107,26 @@ func get_max_living_entity_on_difficulty(difficulty_level : DifficultyTracker.Di
 
 ## Get multiplied max spawn on given difficulty level.
 ## Returns -1 if not working on that difficuly level.
-func get_max_spawn_on_difficulty(difficulty_level : DifficultyTracker.Difficulty) -> int:
+## Returns 0 if there is no cap.
+func get_total_max_spawn_on_difficulty(difficulty_level : DifficultyTracker.Difficulty) -> int:
 	
 	if not is_working_on_difficulty(difficulty_level):
 		return -1
 	
+	if total_max_spawns == 0:
+		return 0
+	
 	match difficulty_level:
 		DifficultyTracker.Difficulty.EASY:
-			return max_living_entity * easy_max_living_entity
+			return max_living_entity * easy_total_max_spawn_scale
 		DifficultyTracker.Difficulty.NORMAL:
-			return max_living_entity * normal_max_living_entity
+			return max_living_entity * normal_total_max_spawn_scale
 		DifficultyTracker.Difficulty.HARD:
-			return max_living_entity * hard_max_living_entity
+			return max_living_entity * hard_total_max_spawn_scale
 		DifficultyTracker.Difficulty.INSANE:
-			return max_living_entity * insane_max_living_entity
+			return max_living_entity * insane_total_max_spawn_scale
 		DifficultyTracker.Difficulty.LETHAL:
-			return max_living_entity * lethal_max_living_entity
+			return max_living_entity * lethal_total_max_spawn_scale
 	
 	# This shouldnt really happen but anyway return -1
 	return -1
