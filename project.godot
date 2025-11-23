@@ -17,6 +17,7 @@ config/features=PackedStringArray("4.5", "GL Compatibility")
 [autoload]
 
 CameraAgent="*res://source/singleton/camera_agent.gd"
+DifficultyTracker="*res://source/singleton/difficulty_tracker.gd"
 
 [display]
 
