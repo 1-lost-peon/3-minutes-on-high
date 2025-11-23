@@ -1,0 +1,69 @@
+[gd_scene load_steps=3 format=3 uid="uid://ly5sap5xuww0"]
+
+[ext_resource type="Theme" uid="uid://8i8x3j7yjm73" path="res://assets/tutorial_text.tres" id="1_1riog"]
+[ext_resource type="FontFile" uid="uid://cle5ju5lvn31d" path="res://assets/font/Cyberphont 2.0.ttf" id="1_3uon5"]
+
+[node name="TutorialText" type="Node2D"]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 64
+
+[node name="MoveVBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="MoveLabel" type="Label" parent="HBoxContainer/MoveVBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_1riog")
+text = "move"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WASDLabel" type="Label" parent="HBoxContainer/MoveVBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_1riog")
+theme_override_fonts/font = ExtResource("1_3uon5")
+text = "w,a,s,d"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AttackVBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="AttackLabel" type="Label" parent="HBoxContainer/AttackVBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_1riog")
+theme_override_fonts/font = ExtResource("1_3uon5")
+text = "attack"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InteractVBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="InteractLabel" type="Label" parent="HBoxContainer/InteractVBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_1riog")
+theme_override_fonts/font = ExtResource("1_3uon5")
+text = "interact"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpacebarLabel" type="Label" parent="HBoxContainer/InteractVBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_1riog")
+theme_override_fonts/font = ExtResource("1_3uon5")
+text = "spacebar"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ArrowsLabel" type="Label" parent="."]
+offset_left = 119.0
+offset_top = 9.0
+offset_right = 238.0
+offset_bottom = 75.0
+theme = ExtResource("1_1riog")
+theme_override_fonts/font = ExtResource("1_3uon5")
+theme_override_font_sizes/font_size = 32
+text = "↑ ↓ ← →"

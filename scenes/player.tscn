@@ -4,8 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b8kt0rrxbr81x" path="res://scenes/bullets.tscn" id="2_i3pqv"]
 [ext_resource type="Texture2D" uid="uid://bk3qswx4ngrin" path="res://assets/sprites/player.png" id="3_ax26v"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
-size = Vector2(32, 32)
+[sub_resource type="CircleShape2D" id="CircleShape2D_qhqgy"]
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 motion_mode = 1
@@ -43,7 +42,7 @@ horizontal_alignment = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1.5)
-shape = SubResource("RectangleShape2D_onrkg")
+shape = SubResource("CircleShape2D_qhqgy")
 
 [node name="AttackTimer" type="Timer" parent="."]
 process_callback = 0
