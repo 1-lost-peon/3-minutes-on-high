@@ -1,6 +1,12 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://cnywmhyx0drw0"]
+[gd_resource type="TileSet" load_steps=4 format=3 uid="uid://cnywmhyx0drw0"]
 
 [ext_resource type="Texture2D" uid="uid://bxwnwa4p6nl0u" path="res://assets/sprites/level_sprites.png" id="1_gqp4o"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_gqp4o"]
+vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)])
+agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5fr2l"]
 texture = ExtResource("1_gqp4o")
@@ -68,6 +74,7 @@ texture_region_size = Vector2i(32, 32)
 7:2/0 = 0
 7:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 5.5518227, -16, 5.243389, 16, -16, 16)
 8:2/0 = 0
+8:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_gqp4o")
 8:1/0 = 0
 8:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 7:1/0 = 0
@@ -106,4 +113,5 @@ texture_region_size = Vector2i(32, 32)
 [resource]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
+navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_5fr2l")
