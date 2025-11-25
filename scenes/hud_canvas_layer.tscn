@@ -1,17 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://d0qv3i4oxed4y"]
+[gd_scene load_steps=7 format=3 uid="uid://d0qv3i4oxed4y"]
 
 [ext_resource type="Script" uid="uid://bv0j6bsp4burd" path="res://source/hud.gd" id="1_yysv7"]
 [ext_resource type="Texture2D" uid="uid://dq62k01il4med" path="res://assets/sprites/health_ui.png" id="2_r572b"]
+[ext_resource type="Texture2D" uid="uid://k1udwfw8m2y0" path="res://assets/sprites/health_ui_numbers.png" id="3_1htod"]
 [ext_resource type="Texture2D" uid="uid://b8rrvg0a4xxas" path="res://assets/sprites/battery_ui.png" id="3_uhibh"]
 [ext_resource type="Texture2D" uid="uid://crjev36roj18b" path="res://assets/sprites/battery_bars_sprites.png" id="4_1htod"]
 [ext_resource type="Texture2D" uid="uid://7f6fc7cslaps" path="res://assets/sprites/stars_sprite.png" id="5_qlyun"]
 
 [node name="HUDCanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_yysv7")
-
-[node name="HealthUi" type="Sprite2D" parent="."]
-position = Vector2(1180, 593)
-texture = ExtResource("2_r572b")
 
 [node name="StatusMarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 3
@@ -27,6 +24,38 @@ grow_vertical = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="StatusMarginContainer"]
 layout_mode = 2
+
+[node name="HPBackground" type="TextureRect" parent="StatusMarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_r572b")
+
+[node name="Digit1" type="Sprite2D" parent="StatusMarginContainer/VBoxContainer/HPBackground"]
+unique_name_in_owner = true
+position = Vector2(27, 36)
+texture = ExtResource("3_1htod")
+hframes = 5
+vframes = 2
+
+[node name="Digit2" type="Sprite2D" parent="StatusMarginContainer/VBoxContainer/HPBackground"]
+unique_name_in_owner = true
+position = Vector2(64, 36)
+texture = ExtResource("3_1htod")
+hframes = 5
+vframes = 2
+
+[node name="Digit3" type="Sprite2D" parent="StatusMarginContainer/VBoxContainer/HPBackground"]
+unique_name_in_owner = true
+position = Vector2(106, 36)
+texture = ExtResource("3_1htod")
+hframes = 5
+vframes = 2
+
+[node name="Digit4" type="Sprite2D" parent="StatusMarginContainer/VBoxContainer/HPBackground"]
+unique_name_in_owner = true
+position = Vector2(140, 36)
+texture = ExtResource("3_1htod")
+hframes = 5
+vframes = 2
 
 [node name="HPLabel" type="Label" parent="StatusMarginContainer/VBoxContainer"]
 unique_name_in_owner = true

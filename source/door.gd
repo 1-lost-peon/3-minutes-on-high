@@ -61,16 +61,40 @@ var barricade : Node2D = null
 # Reference to the tween we use to animate interactions. (player coming close)
 var _interaction_tween : Tween = null
 
+# Interaction GUI
+var hold_time := 1.5
+var hold_progress := 0.0
+var holding := false
+
+func _process(delta):
+	if holding:
+		hold_progress += delta * 2.5
+		$InteractionText/VBoxContainer/ProgressBar.value = (hold_progress / hold_time) * 100
+
+	if hold_progress >= hold_time:
+		if not is_barricaded:
+			open()
+		holding = false
+		hold_progress = 0.0
+		$InteractionText/VBoxContainer/ProgressBar.value
+
 func _unhandled_input(event: InputEvent) -> void:
 	if not _player_detection_area_2d.is_player_inside():
 		return
 	
 	if event.is_action_pressed("interact"):
-		if not is_barricaded:
-			if is_opened:
-				close()
-			else:
-				open()
+		holding = true
+		
+	if event.is_action_released("interact"):
+		holding = false
+		hold_progress = 0.0
+		$InteractionText/VBoxContainer/ProgressBar.value = 0
+	#if event.is_action_pressed("interact"):
+		#if not is_barricaded:
+			#if is_opened:
+				#close()
+			#else:
+				#open()
 	
 	if event.is_action_pressed("barricade"):
 		# Can only set barricade on closed doors.
@@ -136,6 +160,8 @@ func open() -> void:
 	
 	# Enable being a obstacle here.
 	collision_shape_2d.set_deferred("disabled", true)
+	var player_ref := get_tree().get_first_node_in_group("player") as Player
+	player_ref.hp -= 60
 
 func _on_barricade_down() -> void:
 	is_barricaded = false
@@ -165,7 +191,10 @@ func _show_default_visual() -> void:
 		_default_sprite_scale, interaction_duration_secs)
 
 func _on_player_detection_area_2d_player_entered(_player: Player) -> void:
-	_show_interaction_visual()
+	if not is_opened:
+		_show_interaction_visual()
+		$InteractionText.visible = true
 
 func _on_player_detection_area_2d_player_exited(_player: Player) -> void:
 	_show_default_visual()
+	$InteractionText.visible = false

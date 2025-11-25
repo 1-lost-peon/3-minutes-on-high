@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://vwbatgofwwki"]
+[gd_scene load_steps=11 format=3 uid="uid://vwbatgofwwki"]
 
 [ext_resource type="Script" uid="uid://nj0uhvalov6w" path="res://source/door.gd" id="1_hpvv5"]
 [ext_resource type="PackedScene" uid="uid://85dptkfgl63" path="res://scenes/barricade.tscn" id="2_18pbm"]
 [ext_resource type="Texture2D" uid="uid://bxwnwa4p6nl0u" path="res://assets/sprites/level_sprites.png" id="3_83dcw"]
 [ext_resource type="Material" uid="uid://0dboy0o7odrr" path="res://source/shader/outline_material.tres" id="4_la1wf"]
 [ext_resource type="PackedScene" uid="uid://uwoeisn62r5h" path="res://scenes/player_detection_area_2d.tscn" id="5_18pbm"]
+[ext_resource type="PackedScene" uid="uid://xqpi82yby68t" path="res://scenes/interaction_text.tscn" id="6_q5w8r"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_la1wf"]
 load_path = "res://.godot/imported/door.png-3ee73939605461ff1e6ac88070535c2f.ctex"
@@ -39,6 +40,11 @@ texture = SubResource("CompressedTexture2D_la1wf")
 position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_83dcw")
 debug_color = Color(0.6733987, 0.30689642, 1, 0.41960785)
+
+[node name="InteractionText" parent="." instance=ExtResource("6_q5w8r")]
+visible = false
+offset_top = 101.0
+offset_bottom = 101.0
 
 [connection signal="player_entered" from="PlayerDetectionArea2D" to="." method="_on_player_detection_area_2d_player_entered"]
 [connection signal="player_exited" from="PlayerDetectionArea2D" to="." method="_on_player_detection_area_2d_player_exited"]

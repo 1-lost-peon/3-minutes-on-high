@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://xqpi82yby68t"]
+
+[ext_resource type="FontFile" uid="uid://cle5ju5lvn31d" path="res://assets/font/Cyberphont 2.0.ttf" id="1_8kywa"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q7fc4"]
+bg_color = Color(1, 0.15294118, 0.14901961, 1)
+
+[node name="InteractionText" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -109.0
+offset_top = -46.0
+offset_right = 109.0
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DescriptionLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_8kywa")
+theme_override_font_sizes/font_size = 12
+text = "press and hold spacebar
+ to open door - cost: "
+horizontal_alignment = 1
+
+[node name="PriceLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_8kywa")
+theme_override_font_sizes/font_size = 10
+text = "1:00"
+horizontal_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_q7fc4")
+rounded = true
+show_percentage = false

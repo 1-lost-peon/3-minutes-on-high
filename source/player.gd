@@ -7,7 +7,7 @@ enum PlayerState {
 	DEAD
 }
 
-@export var max_hp : float = 10.0
+@export var max_hp : int = 180
 @export var ammo: int = 5
 @export var bullet_scene : PackedScene
 @export var points: int = 5
@@ -18,7 +18,7 @@ enum PlayerState {
 @onready var attack_timer: Timer = $AttackTimer
 @onready var attack_cd_label: Label = $Container/AttackCDLabel
 
-@onready var hp : float = self.max_hp
+@onready var hp : int = self.max_hp
 
 func _ready() -> void:
 	ammo = ammo

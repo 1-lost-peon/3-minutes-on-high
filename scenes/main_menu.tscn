@@ -1,6 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dbkhw8j2t2t0b"]
+[gd_scene load_steps=8 format=3 uid="uid://dbkhw8j2t2t0b"]
 
 [ext_resource type="Script" uid="uid://cg2adguynljgu" path="res://source/main_menu.gd" id="1_cok42"]
+[ext_resource type="Texture2D" uid="uid://bdy5xsbxv5rmh" path="res://assets/sprites/Menu_Background.png" id="2_wu84c"]
+[ext_resource type="Texture2D" uid="uid://tfpn7jfttffs" path="res://assets/sprites/Quit_Button.png" id="3_8ln24"]
+[ext_resource type="Texture2D" uid="uid://br7emq7r427jj" path="res://assets/sprites/Start_Button.png" id="4_rtw2f"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_clurl"]
 bg_color = Color(0.10980392, 0.15294118, 0.20784314, 1)
@@ -149,3 +152,15 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_8f8xy")
 text = "Quit"
+
+[node name="MenuBackground" type="Sprite2D" parent="."]
+position = Vector2(639, 362)
+texture = ExtResource("2_wu84c")
+
+[node name="QuitButton" type="Sprite2D" parent="."]
+position = Vector2(803, 620)
+texture = ExtResource("3_8ln24")
+
+[node name="StartButton" type="Sprite2D" parent="."]
+position = Vector2(422, 622)
+texture = ExtResource("4_rtw2f")
