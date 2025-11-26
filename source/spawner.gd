@@ -3,7 +3,13 @@ class_name Spawner
 
 ## Spawner helper node to spawn enemies on the level.
 
+## Spawn rule for the spawner.
 @export var spawn_rule : SpawnRule = SpawnRule.new()
+
+## Edit this property to activate / deactivate spawner.
+## This property only indicates spawner is working, whether or not it is spawning
+## depends on spawn_rule and game state.
+@export var active : bool = false
 
 # Elapsed time since the last spawn.
 var _elapsed_since_last_time : float = 0.0
@@ -18,6 +24,8 @@ var _weak_refs : Array[WeakRef] = []
 var _spawned_entities : int = 0
 
 func _process(delta: float) -> void:
+	if not active:
+		return
 	_elapsed_since_last_time += delta
 	
 	if _can_spawn():

@@ -5,6 +5,15 @@ class_name Door
 
 ## Door in the game world which can be strengthened with a barricade.
 
+## Emitted when door is opened.
+signal opened()
+## Emitted when door is closed.
+signal closed()
+## Emitted when door is barricaded.
+signal barricaded()
+## Emitted when barricade is down.
+signal barricade_down()
+
 ## Do not set this property in game. Use set_barricade(). Only use this to check.
 @export var is_barricaded : bool = false:
 	set(value):
@@ -117,6 +126,7 @@ func set_barricade() -> void:
 	# Dont remove if check, it causes stack overflow.
 	if not Engine.is_editor_hint():
 		is_barricaded = true
+		barricaded.emit()
 	
 	barricade = barricade_scene.instantiate() as Barricade
 	barricade.barricade_down.connect(_on_barricade_down)
@@ -139,6 +149,7 @@ func close() -> void:
 	# Dont remove if check, it causes stack overflow.
 	if not Engine.is_editor_hint():
 		is_opened = false
+		closed.emit()
 	
 	# Update visuals here.
 	if closed_texture:
@@ -153,6 +164,7 @@ func open() -> void:
 	# Dont remove if check, it causes stack overflow.
 	if not Engine.is_editor_hint():
 		is_opened = true
+		opened.emit()
 	
 	# Update visuals here.
 	if open_texture:
@@ -166,6 +178,7 @@ func open() -> void:
 func _on_barricade_down() -> void:
 	is_barricaded = false
 	barricade = null
+	barricade_down.emit()
 
 func _show_interaction_visual() -> void:
 	if outline_material:
