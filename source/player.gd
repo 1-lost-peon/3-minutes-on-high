@@ -6,9 +6,20 @@ enum PlayerState {
 	WALK,
 	DEAD
 }
-
+enum AmmoType {
+	RED,
+	PURPLE,
+	GREEN,
+	BLUE
+}
 @export var max_hp : int = 180
-@export var ammo: int = 5
+@export var ammo: Array[AmmoType] = [
+	Player.AmmoType.RED,
+	Player.AmmoType.RED,
+	Player.AmmoType.RED,
+	Player.AmmoType.RED,
+	Player.AmmoType.RED
+	]
 @export var bullet_scene : PackedScene
 @export var points: int = 5
 @export_range(1, 1000, 0.1)  var speed : float 
@@ -17,6 +28,7 @@ enum PlayerState {
 @onready var state_label: Label = $Container/StateLabel
 @onready var attack_timer: Timer = $AttackTimer
 @onready var attack_cd_label: Label = $Container/AttackCDLabel
+@onready var ammo_label: Label = $Container/AmmoLabel
 
 @onready var hp : int = self.max_hp
 
@@ -41,13 +53,18 @@ func attack(attack_direction:Vector2):
 	add_sibling(bullet)
 	bullet.global_position = global_position
 	bullet.direction = attack_direction
-	ammo -= 1
+	ammo.pop_back()
 	attack_timer.start()
 
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed(&'debug_hurt'):
 		take_damage(1)
+		
+	var string_ammo = []
+	for a in ammo:
+		string_ammo.append(AmmoType.keys()[a])
+	ammo_label.text = str(string_ammo)
 	if attack_timer.time_left > 0:
 		attack_cd_label.text = "Cooldown: %.2f" % attack_timer.time_left
 	else:
@@ -63,7 +80,7 @@ func _physics_process(delta: float) -> void:
 	var can_attack :bool = (
 		current_state != PlayerState.DEAD and
 		input_attack_direction != Vector2.ZERO and
-		ammo > 0 and
+		len(ammo) > 0 and
 		attack_timer.is_stopped()
 	)
 	if can_attack:

@@ -27,7 +27,7 @@ func _update_player_stats() -> void:
 	update_clock(player_ref.hp)
 	hp_label.text = "HP: " + str(player_ref.hp)
 	points_label.text = "Points: " + str(player_ref.points)
-	ammo_label.text = "Ammo: " + str(player_ref.ammo)
+	ammo_label.text = "Ammo: " + str(len(player_ref.ammo))
 
 func update_clock(total_seconds):
 	var minutes = total_seconds / 60

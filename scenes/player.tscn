@@ -9,7 +9,6 @@
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 motion_mode = 1
 script = ExtResource("1_onrkg")
-ammo = 20
 bullet_scene = ExtResource("2_i3pqv")
 speed = 300.0
 
@@ -36,6 +35,11 @@ text = "AttackCD"
 horizontal_alignment = 1
 
 [node name="StateLabel" type="Label" parent="Container"]
+layout_mode = 2
+text = "State"
+horizontal_alignment = 1
+
+[node name="AmmoLabel" type="Label" parent="Container"]
 layout_mode = 2
 text = "State"
 horizontal_alignment = 1
