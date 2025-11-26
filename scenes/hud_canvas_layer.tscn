@@ -76,6 +76,34 @@ layout_mode = 2
 text = "Ammo: 3"
 horizontal_alignment = 2
 
+[node name="BatteryUi" type="Sprite2D" parent="StatusMarginContainer/VBoxContainer"]
+position = Vector2(80, 118)
+texture = ExtResource("3_uhibh")
+
+[node name="BatteryBarsSprites" type="Sprite2D" parent="StatusMarginContainer/VBoxContainer/BatteryUi"]
+position = Vector2(-63, 0)
+texture = ExtResource("4_1htod")
+
+[node name="BatteryBarsSprites2" type="Sprite2D" parent="StatusMarginContainer/VBoxContainer/BatteryUi"]
+position = Vector2(-33, 0)
+texture = ExtResource("4_1htod")
+
+[node name="BatteryBarsSprites3" type="Sprite2D" parent="StatusMarginContainer/VBoxContainer/BatteryUi"]
+position = Vector2(-2, 0)
+texture = ExtResource("4_1htod")
+
+[node name="BatteryBarsSprites4" type="Sprite2D" parent="StatusMarginContainer/VBoxContainer/BatteryUi"]
+position = Vector2(29, 0)
+texture = ExtResource("4_1htod")
+
+[node name="BatteryBarsSprites5" type="Sprite2D" parent="StatusMarginContainer/VBoxContainer/BatteryUi"]
+position = Vector2(59, 0)
+texture = ExtResource("4_1htod")
+
+[node name="StarsSprite" type="Sprite2D" parent="StatusMarginContainer"]
+position = Vector2(100, -520)
+texture = ExtResource("5_qlyun")
+
 [node name="WaveLabel" type="Label" parent="."]
 unique_name_in_owner = true
 anchors_preset = 5
@@ -88,31 +116,3 @@ offset_bottom = 55.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 25
 text = "Wave: 1"
-
-[node name="BatteryUi" type="Sprite2D" parent="."]
-position = Vector2(1183, 674)
-texture = ExtResource("3_uhibh")
-
-[node name="BatteryBarsSprites" type="Sprite2D" parent="BatteryUi"]
-position = Vector2(-63, 0)
-texture = ExtResource("4_1htod")
-
-[node name="BatteryBarsSprites2" type="Sprite2D" parent="BatteryUi"]
-position = Vector2(-33, 0)
-texture = ExtResource("4_1htod")
-
-[node name="BatteryBarsSprites3" type="Sprite2D" parent="BatteryUi"]
-position = Vector2(-2, 0)
-texture = ExtResource("4_1htod")
-
-[node name="BatteryBarsSprites4" type="Sprite2D" parent="BatteryUi"]
-position = Vector2(29, 0)
-texture = ExtResource("4_1htod")
-
-[node name="BatteryBarsSprites5" type="Sprite2D" parent="BatteryUi"]
-position = Vector2(59, 0)
-texture = ExtResource("4_1htod")
-
-[node name="StarsSprite" type="Sprite2D" parent="."]
-position = Vector2(1146, 36)
-texture = ExtResource("5_qlyun")

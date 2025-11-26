@@ -30,15 +30,14 @@ grow_vertical = 2
 [node name="DescriptionLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_8kywa")
-theme_override_font_sizes/font_size = 12
-text = "press and hold spacebar
- to open door - cost: "
+theme_override_font_sizes/font_size = 20
+text = "to open door - pay: "
 horizontal_alignment = 1
 
 [node name="PriceLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_8kywa")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 16
 text = "1:00"
 horizontal_alignment = 1
 

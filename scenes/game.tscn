@@ -8,15 +8,10 @@
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
 
-[node name="Enemy" parent="." instance=ExtResource("6_gee14")]
-position = Vector2(246, 76)
-
-[node name="Enemy2" parent="." instance=ExtResource("6_gee14")]
-position = Vector2(318, 99)
-
 [node name="HUDCanvasLayer" parent="." instance=ExtResource("6_p57ef")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Pause" type="Control" parent="CanvasLayer"]
 process_mode = 3
@@ -32,3 +27,11 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="MainLevel" parent="." instance=ExtResource("4_lbhrr")]
+
+[node name="Enemy" parent="." instance=ExtResource("6_gee14")]
+z_index = 1
+position = Vector2(47, 1369)
+
+[node name="Enemy2" parent="." instance=ExtResource("6_gee14")]
+z_index = 1
+position = Vector2(1006, 1372)

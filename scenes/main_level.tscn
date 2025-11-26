@@ -3,7 +3,7 @@
 [ext_resource type="TileSet" uid="uid://cnywmhyx0drw0" path="res://scenes/main_level_tileset.tres" id="1_qmak7"]
 [ext_resource type="PackedScene" uid="uid://dmhh7h3xot1lw" path="res://scenes/player.tscn" id="2_bq26l"]
 [ext_resource type="PackedScene" uid="uid://vwbatgofwwki" path="res://scenes/door.tscn" id="4_k5pu3"]
-[ext_resource type="Texture2D" uid="uid://cxo2rlwk3kb81" path="res://assets/sprites/door_frame_red.png" id="5_8ra5a"]
+[ext_resource type="PackedScene" uid="uid://lspenjl0sqqx" path="res://scenes/enemy_door.tscn" id="5_5fr2l"]
 [ext_resource type="PackedScene" uid="uid://ly5sap5xuww0" path="res://scenes/tutorial_text.tscn" id="5_iqu8w"]
 [ext_resource type="Texture2D" uid="uid://dykqxiixfbycm" path="res://assets/sprites/window_top.png" id="6_u2c82"]
 [ext_resource type="Texture2D" uid="uid://ccpxwyssmr22y" path="res://assets/sprites/window_normal.png" id="7_k5pu3"]
@@ -20,10 +20,10 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAEAAIAAAAAAAEAAAAEAAMAAAABAAAAAAAJAAI
 tile_set = ExtResource("1_qmak7")
 
 [node name="TutorialText" parent="." instance=ExtResource("5_iqu8w")]
-position = Vector2(99, 502)
+position = Vector2(164, 1140)
 
 [node name="Player2" parent="." instance=ExtResource("2_bq26l")]
-position = Vector2(273, 539)
+position = Vector2(473, 1056)
 scale = Vector2(1.5, 1.5)
 
 [node name="Door" parent="." instance=ExtResource("4_k5pu3")]
@@ -41,33 +41,17 @@ position = Vector2(1039, 996)
 [node name="Door5" parent="." instance=ExtResource("4_k5pu3")]
 position = Vector2(624, 708)
 
-[node name="EnemyDoor1" parent="." instance=ExtResource("4_k5pu3")]
-position = Vector2(-239, 709)
+[node name="EnemyDoor1" parent="." instance=ExtResource("5_5fr2l")]
+position = Vector2(-240, 709)
 
-[node name="DoorFrameRed" type="Sprite2D" parent="EnemyDoor1"]
-position = Vector2(0, -4)
-texture = ExtResource("5_8ra5a")
-
-[node name="EnemyDoor2" parent="." instance=ExtResource("4_k5pu3")]
+[node name="EnemyDoor2" parent="." instance=ExtResource("5_5fr2l")]
 position = Vector2(48, 1412)
 
-[node name="DoorFrameRed" type="Sprite2D" parent="EnemyDoor2"]
-position = Vector2(0, -4)
-texture = ExtResource("5_8ra5a")
-
-[node name="EnemyDoor3" parent="." instance=ExtResource("4_k5pu3")]
+[node name="EnemyDoor3" parent="." instance=ExtResource("5_5fr2l")]
 position = Vector2(1104, -188)
 
-[node name="DoorFrameRed" type="Sprite2D" parent="EnemyDoor3"]
-position = Vector2(0, -4)
-texture = ExtResource("5_8ra5a")
-
-[node name="EnemyDoor4" parent="." instance=ExtResource("4_k5pu3")]
+[node name="EnemyDoor4" parent="." instance=ExtResource("5_5fr2l")]
 position = Vector2(1008, 1412)
-
-[node name="DoorFrameRed" type="Sprite2D" parent="EnemyDoor4"]
-position = Vector2(0, -4)
-texture = ExtResource("5_8ra5a")
 
 [node name="WindowTop" type="Sprite2D" parent="."]
 position = Vector2(113, 8.5)
