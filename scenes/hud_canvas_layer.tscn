@@ -25,6 +25,221 @@ grow_vertical = 0
 [node name="VBoxContainer" type="VBoxContainer" parent="StatusMarginContainer"]
 layout_mode = 2
 
+[node name="BatteryBackground" type="TextureRect" parent="StatusMarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("3_uhibh")
+
+[node name="BatteryBarsSprites1" type="Sprite2D" parent="StatusMarginContainer/VBoxContainer/BatteryBackground"]
+unique_name_in_owner = true
+position = Vector2(10, 23)
+texture = ExtResource("4_1htod")
+hframes = 6
+frame = 4
+
+[node name="BatteryBarsSprites2" type="Sprite2D" parent="StatusMarginContainer/VBoxContainer/BatteryBackground"]
+unique_name_in_owner = true
+position = Vector2(15, 23)
+texture = ExtResource("4_1htod")
+hframes = 6
+frame = 4
+
+[node name="BatteryBarsSprites3" type="Sprite2D" parent="StatusMarginContainer/VBoxContainer/BatteryBackground"]
+unique_name_in_owner = true
+position = Vector2(20, 23)
+texture = ExtResource("4_1htod")
+hframes = 6
+frame = 4
+
+[node name="BatteryBarsSprites4" type="Sprite2D" parent="StatusMarginContainer/VBoxContainer/BatteryBackground"]
+unique_name_in_owner = true
+position = Vector2(25, 23)
+texture = ExtResource("4_1htod")
+hframes = 6
+frame = 4
+
+[node name="BatteryBarsSprites5" type="Sprite2D" parent="StatusMarginContainer/VBoxContainer/BatteryBackground"]
+unique_name_in_owner = true
+position = Vector2(30, 23)
+texture = ExtResource("4_1htod")
+hframes = 6
+frame = 4
+
+[node name="BatteryBarsSprites6" type="Sprite2D" parent="StatusMarginContainer/VBoxContainer/BatteryBackground"]
+unique_name_in_owner = true
+position = Vector2(35, 23)
+texture = ExtResource("4_1htod")
+hframes = 6
+frame = 4
+
+[node name="BatteryBarsSprites7" type="Sprite2D" parent="StatusMarginContainer/VBoxContainer/BatteryBackground"]
+unique_name_in_owner = true
+position = Vector2(40, 23)
+texture = ExtResource("4_1htod")
+hframes = 6
+frame = 4
+
+[node name="BatteryBarsSprites8" type="Sprite2D" parent="StatusMarginContainer/VBoxContainer/BatteryBackground"]
+unique_name_in_owner = true
+position = Vector2(45, 23)
+texture = ExtResource("4_1htod")
+hframes = 6
+frame = 4
+
+[node name="BatteryBarsSprites9" type="Sprite2D" parent="StatusMarginContainer/VBoxContainer/BatteryBackground"]
+unique_name_in_owner = true
+position = Vector2(50, 23)
+texture = ExtResource("4_1htod")
+hframes = 6
+frame = 4
+
+[node name="BatteryBarsSprites10" type="Sprite2D" parent="StatusMarginContainer/VBoxContainer/BatteryBackground"]
+unique_name_in_owner = true
+position = Vector2(55, 23)
+texture = ExtResource("4_1htod")
+hframes = 6
+frame = 4
+
+[node name="BatteryBarsSprites11" type="Sprite2D" parent="StatusMarginContainer/VBoxContainer/BatteryBackground"]
+unique_name_in_owner = true
+position = Vector2(60, 23)
+texture = ExtResource("4_1htod")
+hframes = 6
+frame = 4
+
+[node name="BatteryBarsSprites12" type="Sprite2D" parent="StatusMarginContainer/VBoxContainer/BatteryBackground"]
+unique_name_in_owner = true
+position = Vector2(65, 23)
+texture = ExtResource("4_1htod")
+hframes = 6
+frame = 4
+
+[node name="BatteryBarsSprites13" type="Sprite2D" parent="StatusMarginContainer/VBoxContainer/BatteryBackground"]
+unique_name_in_owner = true
+position = Vector2(70, 23)
+texture = ExtResource("4_1htod")
+hframes = 6
+frame = 4
+
+[node name="BatteryBarsSprites14" type="Sprite2D" parent="StatusMarginContainer/VBoxContainer/BatteryBackground"]
+unique_name_in_owner = true
+position = Vector2(75, 23)
+texture = ExtResource("4_1htod")
+hframes = 6
+frame = 4
+
+[node name="BatteryBarsSprites15" type="Sprite2D" parent="StatusMarginContainer/VBoxContainer/BatteryBackground"]
+unique_name_in_owner = true
+position = Vector2(80, 23)
+texture = ExtResource("4_1htod")
+hframes = 6
+frame = 4
+
+[node name="BatteryBarsSprites16" type="Sprite2D" parent="StatusMarginContainer/VBoxContainer/BatteryBackground"]
+unique_name_in_owner = true
+position = Vector2(85, 23)
+texture = ExtResource("4_1htod")
+hframes = 6
+frame = 4
+
+[node name="BatteryBarsSprites17" type="Sprite2D" parent="StatusMarginContainer/VBoxContainer/BatteryBackground"]
+unique_name_in_owner = true
+position = Vector2(90, 23)
+texture = ExtResource("4_1htod")
+hframes = 6
+frame = 4
+
+[node name="BatteryBarsSprites18" type="Sprite2D" parent="StatusMarginContainer/VBoxContainer/BatteryBackground"]
+unique_name_in_owner = true
+position = Vector2(95, 23)
+texture = ExtResource("4_1htod")
+hframes = 6
+frame = 4
+
+[node name="BatteryBarsSprites19" type="Sprite2D" parent="StatusMarginContainer/VBoxContainer/BatteryBackground"]
+unique_name_in_owner = true
+position = Vector2(100, 23)
+texture = ExtResource("4_1htod")
+hframes = 6
+frame = 4
+
+[node name="BatteryBarsSprites20" type="Sprite2D" parent="StatusMarginContainer/VBoxContainer/BatteryBackground"]
+unique_name_in_owner = true
+position = Vector2(105, 23)
+texture = ExtResource("4_1htod")
+hframes = 6
+frame = 4
+
+[node name="BatteryBarsSprites21" type="Sprite2D" parent="StatusMarginContainer/VBoxContainer/BatteryBackground"]
+unique_name_in_owner = true
+position = Vector2(110, 23)
+texture = ExtResource("4_1htod")
+hframes = 6
+frame = 4
+
+[node name="BatteryBarsSprites22" type="Sprite2D" parent="StatusMarginContainer/VBoxContainer/BatteryBackground"]
+unique_name_in_owner = true
+position = Vector2(115, 23)
+texture = ExtResource("4_1htod")
+hframes = 6
+frame = 4
+
+[node name="BatteryBarsSprites23" type="Sprite2D" parent="StatusMarginContainer/VBoxContainer/BatteryBackground"]
+unique_name_in_owner = true
+position = Vector2(120, 23)
+texture = ExtResource("4_1htod")
+hframes = 6
+frame = 4
+
+[node name="BatteryBarsSprites24" type="Sprite2D" parent="StatusMarginContainer/VBoxContainer/BatteryBackground"]
+unique_name_in_owner = true
+position = Vector2(125, 23)
+texture = ExtResource("4_1htod")
+hframes = 6
+frame = 4
+
+[node name="BatteryBarsSprites25" type="Sprite2D" parent="StatusMarginContainer/VBoxContainer/BatteryBackground"]
+unique_name_in_owner = true
+position = Vector2(130, 23)
+texture = ExtResource("4_1htod")
+hframes = 6
+frame = 4
+
+[node name="BatteryBarsSprites26" type="Sprite2D" parent="StatusMarginContainer/VBoxContainer/BatteryBackground"]
+unique_name_in_owner = true
+position = Vector2(135, 23)
+texture = ExtResource("4_1htod")
+hframes = 6
+frame = 4
+
+[node name="BatteryBarsSprites27" type="Sprite2D" parent="StatusMarginContainer/VBoxContainer/BatteryBackground"]
+unique_name_in_owner = true
+position = Vector2(140, 23)
+texture = ExtResource("4_1htod")
+hframes = 6
+frame = 4
+
+[node name="BatteryBarsSprites28" type="Sprite2D" parent="StatusMarginContainer/VBoxContainer/BatteryBackground"]
+unique_name_in_owner = true
+position = Vector2(145, 23)
+texture = ExtResource("4_1htod")
+hframes = 6
+frame = 4
+
+[node name="BatteryBarsSprites29" type="Sprite2D" parent="StatusMarginContainer/VBoxContainer/BatteryBackground"]
+unique_name_in_owner = true
+position = Vector2(150, 23)
+texture = ExtResource("4_1htod")
+hframes = 6
+frame = 4
+
+[node name="BatteryBarsSprites30" type="Sprite2D" parent="StatusMarginContainer/VBoxContainer/BatteryBackground"]
+unique_name_in_owner = true
+position = Vector2(155, 23)
+texture = ExtResource("4_1htod")
+hframes = 6
+frame = 4
+
 [node name="HPBackground" type="TextureRect" parent="StatusMarginContainer/VBoxContainer"]
 layout_mode = 2
 texture = ExtResource("2_r572b")
@@ -77,6 +292,7 @@ text = "Ammo: 3"
 horizontal_alignment = 2
 
 [node name="BatteryUi" type="Sprite2D" parent="StatusMarginContainer/VBoxContainer"]
+visible = false
 position = Vector2(80, 118)
 texture = ExtResource("3_uhibh")
 

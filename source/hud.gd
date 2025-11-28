@@ -11,6 +11,7 @@ class_name HUD
 @onready var digit_2 = %Digit2
 @onready var digit_3 = %Digit3
 @onready var digit_4 = %Digit4
+@onready var bars := %BatteryBackground.get_children()
 
 func _process(_delta: float) -> void:
 	_update_player_stats()
@@ -25,9 +26,18 @@ func _update_player_stats() -> void:
 		return
 		
 	update_clock(player_ref.hp)
+	update_ammo(player_ref.ammo)
 	hp_label.text = "HP: " + str(player_ref.hp)
 	points_label.text = "Points: " + str(player_ref.points)
 	ammo_label.text = "Ammo: " + str(len(player_ref.ammo))
+
+func update_ammo(ammo):
+	ammo = clamp(len(ammo), 0, 30)  # max bars
+
+	for i in range(30):
+		var bar := bars[i] as Sprite2D
+		bar.frame = 0 if i < ammo else 4
+	
 
 func update_clock(total_seconds):
 	var minutes = total_seconds / 60

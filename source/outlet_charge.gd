@@ -26,9 +26,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	var player_ref := get_tree().get_first_node_in_group("player") as Player
 	if not player_ref:
 		return
-	if Input.is_action_pressed("charge"):
+	if Input.is_action_pressed("interact"):
 		holding = true
-	if event.is_action_released("charge"):
+	if event.is_action_released("interact"):
 		holding = false
 		hold_progress = 0.0
 		$ProgressBar.value = 0
