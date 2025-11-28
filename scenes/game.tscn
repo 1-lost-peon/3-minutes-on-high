@@ -28,10 +28,10 @@ offset_bottom = 40.0
 
 [node name="MainLevel" parent="." instance=ExtResource("4_lbhrr")]
 
-[node name="Enemy" parent="." instance=ExtResource("6_gee14")]
+[node name="Enemy" parent="." groups=["enemy"] instance=ExtResource("6_gee14")]
 z_index = 1
-position = Vector2(47, 1369)
+position = Vector2(47, 1457)
 
-[node name="Enemy2" parent="." instance=ExtResource("6_gee14")]
+[node name="Enemy2" parent="." groups=["enemy"] instance=ExtResource("6_gee14")]
 z_index = 1
-position = Vector2(1006, 1372)
+position = Vector2(1004, 1458)

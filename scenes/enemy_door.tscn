@@ -1,35 +1,19 @@
-[gd_scene load_steps=11 format=3 uid="uid://lspenjl0sqqx"]
+[gd_scene load_steps=6 format=3 uid="uid://lspenjl0sqqx"]
 
-[ext_resource type="Script" uid="uid://nj0uhvalov6w" path="res://source/door.gd" id="1_cxbss"]
-[ext_resource type="PackedScene" uid="uid://85dptkfgl63" path="res://scenes/barricade.tscn" id="2_8sab6"]
+[ext_resource type="Script" uid="uid://tm6hbm8ikay8" path="res://source/enemy_door.gd" id="1_ydmv2"]
+[ext_resource type="PackedScene" uid="uid://c47f4bddmrxyn" path="res://scenes/enemy_detection_area_2d.tscn" id="2_ydmv2"]
 [ext_resource type="Texture2D" uid="uid://bnhxi2pdygry5" path="res://assets/sprites/enemy_door.png" id="3_8sab6"]
-[ext_resource type="Texture2D" uid="uid://bxwnwa4p6nl0u" path="res://assets/sprites/level_sprites.png" id="3_cl8ge"]
-[ext_resource type="Material" uid="uid://0dboy0o7odrr" path="res://source/shader/outline_material.tres" id="4_ksl3f"]
-[ext_resource type="PackedScene" uid="uid://uwoeisn62r5h" path="res://scenes/player_detection_area_2d.tscn" id="5_te247"]
 [ext_resource type="PackedScene" uid="uid://xqpi82yby68t" path="res://scenes/interaction_text.tscn" id="6_ok02g"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_18pbm"]
-atlas = ExtResource("3_cl8ge")
-region = Rect2(416, 96, 32, 64)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_18pbm"]
-radius = 100.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_83dcw"]
 size = Vector2(52, 57)
 
 [node name="EnemyDoor" type="StaticBody2D"]
-script = ExtResource("1_cxbss")
-barricade_scene = ExtResource("2_8sab6")
-closed_texture = ExtResource("3_8sab6")
-open_texture = SubResource("AtlasTexture_18pbm")
-outline_material = ExtResource("4_ksl3f")
-interaction_scale_factor = 1.2
+collision_layer = 9
+collision_mask = 2
+script = ExtResource("1_ydmv2")
 
-[node name="PlayerDetectionArea2D" parent="." instance=ExtResource("5_te247")]
-
-[node name="CollisionShape2D" parent="PlayerDetectionArea2D" index="0"]
-shape = SubResource("CircleShape2D_18pbm")
+[node name="EnemyDetectionArea2D" parent="." instance=ExtResource("2_ydmv2")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_8sab6")
@@ -44,7 +28,5 @@ visible = false
 offset_top = 101.0
 offset_bottom = 101.0
 
-[connection signal="player_entered" from="PlayerDetectionArea2D" to="." method="_on_player_detection_area_2d_player_entered"]
-[connection signal="player_exited" from="PlayerDetectionArea2D" to="." method="_on_player_detection_area_2d_player_exited"]
-
-[editable path="PlayerDetectionArea2D"]
+[connection signal="enemy_entered" from="EnemyDetectionArea2D" to="." method="_on_enemy_detection_area_2d_enemy_entered"]
+[connection signal="enemy_exited" from="EnemyDetectionArea2D" to="." method="_on_enemy_detection_area_2d_enemy_exited"]

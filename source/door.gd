@@ -3,29 +3,10 @@
 extends StaticBody2D
 class_name Door
 
-## Door in the game world which can be strengthened with a barricade.
-
 ## Emitted when door is opened.
 signal opened()
 ## Emitted when door is closed.
 signal closed()
-## Emitted when door is barricaded.
-signal barricaded()
-## Emitted when barricade is down.
-signal barricade_down()
-
-## Do not set this property in game. Use set_barricade(). Only use this to check.
-@export var is_barricaded : bool = false:
-	set(value):
-		if Engine.is_editor_hint() and is_node_ready():
-			if value:
-				set_barricade()
-			else:
-				remove_barricade()
-		
-		is_barricaded = value
-	get:
-		return is_barricaded
 
 ## Do not set this property in game. Use open() and close(). Only use this to check.
 @export var is_opened : bool = false:
@@ -40,9 +21,6 @@ signal barricade_down()
 	get:
 		return is_opened
 
-@export var barricade_scene : PackedScene = null
-## Point cost to set up barricade on this door.
-@export var barricade_cost : int = 5.0
 @export var closed_texture : Texture2D = null
 @export var open_texture : Texture2D = null
 ## Used for drawing outline to indicate player can interact with this.
@@ -64,9 +42,6 @@ signal barricade_down()
 ## Sprites default scale value, used for scaling down when player goes far away.
 @onready var _default_sprite_scale := self.sprite_2d.scale
 
-## Reference to the barricade if any exist at the moment.
-var barricade : Node2D = null
-
 # Reference to the tween we use to animate interactions. (player coming close)
 var _interaction_tween : Tween = null
 
@@ -81,8 +56,7 @@ func _process(delta):
 		$InteractionText/VBoxContainer/ProgressBar.value = (hold_progress / hold_time) * 100
 
 	if hold_progress >= hold_time:
-		if not is_barricaded:
-			open()
+		open()
 		holding = false
 		hold_progress = 0.0
 		$InteractionText/VBoxContainer/ProgressBar.value
@@ -98,51 +72,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		holding = false
 		hold_progress = 0.0
 		$InteractionText/VBoxContainer/ProgressBar.value = 0
-	#if event.is_action_pressed("interact"):
-		#if not is_barricaded:
-			#if is_opened:
-				#close()
-			#else:
-				#open()
-	
-	if event.is_action_pressed("barricade"):
-		# Can only set barricade on closed doors.
-		if not is_barricaded and not is_opened:
-			
-			# Check players points
-			var player_ref := get_tree().get_first_node_in_group("player") as Player
-			if not player_ref:
-				return
-				
-			if player_ref.points < barricade_cost:
-				return
-			
-		# Set up barricade and decrease player points.
-			player_ref.points -= barricade_cost
-			set_barricade()
-
-## Sets up barricade forcefully, make sure to check status first.
-func set_barricade() -> void:
-	# Dont remove if check, it causes stack overflow.
-	if not Engine.is_editor_hint():
-		is_barricaded = true
-		barricaded.emit()
-	
-	barricade = barricade_scene.instantiate() as Barricade
-	barricade.barricade_down.connect(_on_barricade_down)
-	add_child(barricade)
-
-## Removes the barricade, will not be used in game.
-## Used for editor purposes only.
-func remove_barricade() -> void:
-	# Dont remove if check, it causes stack overflow.
-	if not Engine.is_editor_hint():
-		is_barricaded = false
-	
-	if barricade:
-		barricade.queue_free()
-	
-	barricade = null
 
 ## Closes the door.
 func close() -> void:
@@ -159,7 +88,6 @@ func close() -> void:
 	collision_shape_2d.set_deferred("disabled", false)
 
 ## Opens the door forcefully.
-## Make sure to check if door is barricaded first,
 func open() -> void:
 	# Dont remove if check, it causes stack overflow.
 	if not Engine.is_editor_hint():
@@ -167,18 +95,12 @@ func open() -> void:
 		opened.emit()
 	
 	# Update visuals here.
-	if open_texture:
-		sprite_2d.texture = open_texture
+	$Sprite2D.visible = false
 	
 	# Enable being a obstacle here.
 	collision_shape_2d.set_deferred("disabled", true)
 	var player_ref := get_tree().get_first_node_in_group("player") as Player
 	player_ref.hp -= 60
-
-func _on_barricade_down() -> void:
-	is_barricaded = false
-	barricade = null
-	barricade_down.emit()
 
 func _show_interaction_visual() -> void:
 	if outline_material:
