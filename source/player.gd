@@ -13,12 +13,13 @@ enum AmmoType {
 	BLUE
 }
 @export var max_hp : int = 180
+const MAX_AMMO := 30
 @export var ammo: Array[AmmoType] = [
-	Player.AmmoType.RED,
-	Player.AmmoType.RED,
-	Player.AmmoType.RED,
-	Player.AmmoType.RED,
-	Player.AmmoType.RED
+	Player.AmmoType.GREEN,
+	Player.AmmoType.GREEN,
+	Player.AmmoType.GREEN,
+	Player.AmmoType.GREEN,
+	Player.AmmoType.GREEN
 	]
 @export var bullet_scene : PackedScene
 @export var points: int = 5
@@ -87,7 +88,6 @@ func _physics_process(delta: float) -> void:
 		attack(input_attack_direction)
 
 func take_damage(value):
-	
 	if current_state == PlayerState.DEAD:
 		return
 	
@@ -113,3 +113,11 @@ func _walk_update(_delta):
 		return
 	velocity = input_direction * speed
 	move_and_slide()
+
+func fill_ammo_full() -> void:
+	ammo.clear()
+	for i in range(MAX_AMMO):
+		ammo.append(Player.AmmoType.GREEN)
+
+func reset_hp() -> void:
+	hp = max_hp

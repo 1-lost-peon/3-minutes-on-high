@@ -2,6 +2,7 @@
 
 extends Node2D
 
+@onready var progress_bar = $ProgressBar
 @onready var interaction_text: Label = $InteractionText
 @onready var player_detection_area_2d: PlayerDetectionArea2D = $PlayerDetectionArea2D
 
@@ -38,6 +39,7 @@ func _physics_process(delta: float) -> void:
 	if Engine.is_editor_hint(): return
 	var is_player_inside = player_detection_area_2d.is_player_inside()
 	interaction_text.visible = is_player_inside
+	progress_bar.visible = is_player_inside
 	if not is_player_inside:
 		return
 	if holding:
@@ -48,6 +50,7 @@ func _physics_process(delta: float) -> void:
 		holding = false
 		var player_ref := get_tree().get_first_node_in_group("player") as Player
 		player_ref.ammo.push_front(ammo_type)
+		player_ref.hp -= 5
 		hold_progress = 0.0
 
 		

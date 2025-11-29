@@ -27,7 +27,7 @@ func _process(delta: float) -> void:
 	if not active:
 		return
 	_elapsed_since_last_time += delta
-	
+		
 	if _can_spawn():
 		_spawn()
 
@@ -62,7 +62,7 @@ func _spawn() -> void:
 func _can_spawn() -> bool:
 	var time_check : bool = _elapsed_since_last_time >= \
 		spawn_rule.get_cooldown_on_difficulty(DifficultyTracker.get_difficulty())
-	
+
 	_check_living_entites()
 	
 	var living_entity_check : bool = _living_entites_count < \

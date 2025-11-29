@@ -13,7 +13,7 @@ class_name SpawnRule
 ## Maximum number of living entity for the spawn, leave it as 0 if not specified.
 @export var max_living_entity : int = 0
 ## Scene to spawn.
-@export var spawn_scene : PackedScene = null
+@export var spawn_scene : PackedScene = preload("res://scenes/enemy.tscn")
 ## Spawn cooldown in seconds.
 @export var cooldown_seconds : float = 10.0
 ## Maximum number of total spawns for this rule, leave it as 0 if not specified.
@@ -26,15 +26,15 @@ class_name SpawnRule
 
 @export_group("Cooldown Scales")
 ## Scale will multiply cooldown_seconds in matching difficulty level.
-@export var easy_cooldown_scale : float = 1.0
+@export var easy_cooldown_scale : float = 0.25
 ## Scale will multiply cooldown_seconds in matching difficulty level.
-@export var normal_cooldown_scale : float = 1.0
+@export var normal_cooldown_scale : float = 0.25
 ## Scale will multiply cooldown_seconds in matching difficulty level.
-@export var hard_cooldown_scale : float = 1.0
+@export var hard_cooldown_scale : float = 0.5
 ## Scale will multiply cooldown_seconds in matching difficulty level.
-@export var insane_cooldown_scale : float = 1.0
+@export var insane_cooldown_scale : float = 0.5
 ## Scale will multiply cooldown_seconds in matching difficulty level.
-@export var lethal_cooldown_scale : float = 1.0
+@export var lethal_cooldown_scale : float = 0.5
 
 @export_group("Spawn Count Scales")
 ## Scale will multiply spawn_count in matching difficulty level.

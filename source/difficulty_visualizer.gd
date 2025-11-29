@@ -59,8 +59,8 @@ func _input(event: InputEvent) -> void:
 func _ready() -> void:
 	_start_time = Time.get_ticks_msec()
 	DifficultyTracker.crime_committed.connect(_on_crime_committed)
-	DifficultyTracker.difficulty_increased.connect(_on_difficulty_increased)
-	DifficultyTracker.difficulty_reset.connect(_on_difficulty_reset)
+	#DifficultyTracker.difficulty_increased.connect(_on_difficulty_increased)
+	#DifficultyTracker.difficulty_reset.connect(_on_difficulty_reset)
 
 func _process(_delta: float) -> void:
 	_handle_elapsed_time()

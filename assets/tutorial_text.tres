@@ -1,6 +1,9 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://8i8x3j7yjm73"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://8i8x3j7yjm73"]
 
 [ext_resource type="FontFile" uid="uid://cle5ju5lvn31d" path="res://assets/font/Cyberphont 2.0.ttf" id="1_nlqkp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nlqkp"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [resource]
 default_font = ExtResource("1_nlqkp")
@@ -8,3 +11,4 @@ default_font_size = 16
 Label/colors/font_color = Color(1, 1, 1, 0.9098039)
 Label/colors/font_shadow_color = Color(0, 0, 0, 1)
 Label/font_sizes/font_size = 30
+Label/styles/focus = SubResource("StyleBoxFlat_nlqkp")

@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bfdi7ko7mp5b8"]
+[gd_scene load_steps=6 format=3 uid="uid://bfdi7ko7mp5b8"]
 
+[ext_resource type="Script" uid="uid://c3lntjje8klt3" path="res://scenes/game.gd" id="1_iywne"]
 [ext_resource type="PackedScene" uid="uid://c3fwmcj1en1ph" path="res://scenes/main_level.tscn" id="4_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://ckitdvv62o4s5" path="res://scenes/enemy.tscn" id="6_gee14"]
 [ext_resource type="PackedScene" uid="uid://d0qv3i4oxed4y" path="res://scenes/hud_canvas_layer.tscn" id="6_p57ef"]
@@ -7,6 +8,7 @@
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_iywne")
 
 [node name="HUDCanvasLayer" parent="." instance=ExtResource("6_p57ef")]
 

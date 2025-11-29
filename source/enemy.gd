@@ -13,7 +13,7 @@ enum EnemyState {
 @onready var health_label: Label = $Container/HealthLabel
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
-@export var health : int = 10 :
+@export var health : int = 2 :
 	set(value):
 		health = value
 		if health_label == null: return
@@ -39,7 +39,7 @@ func _ready() -> void:
 	_player_ref = get_tree().get_first_node_in_group("player")
 
 func change_state(new_state):
-	print("Current: %s, new: %s" % [current_state, new_state])
+	#print("Current: %s, new: %s" % [current_state, new_state])
 	state_label.text = "State: %s"  % str(EnemyState.keys()[new_state])
 	current_state = new_state
 
@@ -51,7 +51,6 @@ func _physics_process(delta: float) -> void:
 		EnemyState.ATTACK: _attack_update(delta)
 
 func take_damage(value):
-	
 	if current_state == EnemyState.DEAD:
 		return
 	health -= value

@@ -12,7 +12,7 @@ class_name _DifficultyTracker
 signal difficulty_increased()
 
 ## Emitted whenever crime is committed.
-signal crime_committed()
+#signal crime_committed()
 
 ## Emitted whenever singleton is reset. Used to replay the game.
 signal difficulty_reset()
@@ -48,43 +48,22 @@ var _current_punishment : int = 0
 # Current level of difficulty
 var _current_difficulty : Difficulty = Difficulty.EASY
 
-## Repor crime thats been committed. This will contribute to the games difficulty level.
-func report_crime(crime_level : Crime) -> void:
-	
-	match crime_level:
-		Crime.LITTLE:
-			_current_punishment += _little_crime_punishment
-		Crime.MEDIUM:
-			_current_punishment += _medium_crime_punishment
-		Crime.BIG:
-			_current_punishment += _big_crime_punishment
-	
-	crime_committed.emit()
-	
-	# Increase the difficulty if threshold reached.
-	if _current_punishment >= _difficulty_threshold:
-		
-		# Increase the difficulty now.
-		match _current_difficulty:
-			Difficulty.EASY:
-				_current_punishment = 0
-				_current_difficulty = Difficulty.NORMAL
-				difficulty_increased.emit()
-			Difficulty.NORMAL:
-				_current_punishment = 0
-				_current_difficulty = Difficulty.HARD
-				difficulty_increased.emit()
-			Difficulty.HARD:
-				_current_punishment = 0
-				_current_difficulty = Difficulty.INSANE
-				difficulty_increased.emit()
-			Difficulty.INSANE:
-				_current_punishment = 0
-				_current_difficulty = Difficulty.LETHAL
-				difficulty_increased.emit()
-			Difficulty.LETHAL:
-				# We reached max do nothing.
-				pass
+func increase_difficulty() -> void:
+	match _current_difficulty:
+		Difficulty.EASY:
+			_current_difficulty = Difficulty.NORMAL
+			difficulty_increased.emit()
+		Difficulty.NORMAL:
+			_current_difficulty = Difficulty.HARD
+			difficulty_increased.emit()
+		Difficulty.HARD:
+			_current_difficulty = Difficulty.INSANE
+			difficulty_increased.emit()
+		Difficulty.INSANE:
+			_current_difficulty = Difficulty.LETHAL
+			difficulty_increased.emit()
+		Difficulty.LETHAL:
+			pass
 
 ## Get the games current difficulty level.
 func get_difficulty() -> Difficulty:
