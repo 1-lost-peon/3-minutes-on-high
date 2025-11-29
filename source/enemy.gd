@@ -56,6 +56,7 @@ func take_damage(value):
 	health -= value
 	if health == 0:
 		current_state = EnemyState.DEAD
+		_player_ref.hp += 3
 	
 func _dead_update(_delta):
 	return

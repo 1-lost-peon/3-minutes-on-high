@@ -3,7 +3,7 @@ extends Area2D
 var direction = Vector2.ZERO
 @export var speed :float = 300.0
 
-@export var damage :int = 2 
+@export var damage :int = 1 
 func _physics_process(delta: float) -> void:
 	global_position += direction * delta * speed
 

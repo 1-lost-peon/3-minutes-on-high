@@ -12,6 +12,9 @@ enum AmmoType {
 	GREEN,
 	BLUE
 }
+
+@export var hp_drain_interval: float = 1.25
+var _hp_drain_timer: float = 0.0
 @export var max_hp : int = 180
 const MAX_AMMO := 30
 @export var ammo: Array[AmmoType] = [
@@ -121,3 +124,6 @@ func fill_ammo_full() -> void:
 
 func reset_hp() -> void:
 	hp = max_hp
+
+func _on_health_drain_timer_timeout():
+	hp -= 1

@@ -57,3 +57,8 @@ one_shot = true
 process_callback = 0
 position_smoothing_enabled = true
 position_smoothing_speed = 3.0
+
+[node name="HealthTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="HealthTimer" to="." method="_on_health_drain_timer_timeout"]
