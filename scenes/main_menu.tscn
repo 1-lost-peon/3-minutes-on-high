@@ -1,22 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://dbkhw8j2t2t0b"]
+[gd_scene load_steps=14 format=3 uid="uid://dbkhw8j2t2t0b"]
 
 [ext_resource type="Script" uid="uid://cg2adguynljgu" path="res://source/main_menu.gd" id="1_cok42"]
-[ext_resource type="Texture2D" uid="uid://bdy5xsbxv5rmh" path="res://assets/sprites/Menu_Background.png" id="2_wu84c"]
-[ext_resource type="Texture2D" uid="uid://tfpn7jfttffs" path="res://assets/sprites/Quit_Button.png" id="3_8ln24"]
-[ext_resource type="Texture2D" uid="uid://br7emq7r427jj" path="res://assets/sprites/Start_Button.png" id="4_rtw2f"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_clurl"]
-bg_color = Color(0.10980392, 0.15294118, 0.20784314, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cok42"]
-bg_color = Color(0.252, 0.42, 0.252, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8f8xy"]
-bg_color = Color(0.45, 0.1935, 0.1935, 1)
+[ext_resource type="Texture2D" uid="uid://bdy5xsbxv5rmh" path="res://assets/sprites/menu/Menu_Background.png" id="2_wu84c"]
+[ext_resource type="Texture2D" uid="uid://tfpn7jfttffs" path="res://assets/sprites/menu/Quit_Button.png" id="3_8ln24"]
+[ext_resource type="FontFile" uid="uid://cle5ju5lvn31d" path="res://assets/font/Cyberphont 2.0.ttf" id="3_rcqid"]
+[ext_resource type="Texture2D" uid="uid://bip056dtargv8" path="res://assets/sprites/menu/Start_Button_Pressed.png" id="3_rtw2f"]
+[ext_resource type="Texture2D" uid="uid://cbxgv8ads2xpi" path="res://assets/sprites/menu/Start_Button_hover.png" id="4_oa1go"]
+[ext_resource type="Texture2D" uid="uid://br7emq7r427jj" path="res://assets/sprites/menu/Start_Button.png" id="4_rtw2f"]
+[ext_resource type="Texture2D" uid="uid://e4idb4tydwcv" path="res://assets/sprites/menu/Quit_Button_Pressed.png" id="7_tbmy8"]
+[ext_resource type="Texture2D" uid="uid://ctoehvudt61tl" path="res://assets/sprites/menu/Quit_Button_Hover.png" id="8_jk1qb"]
+[ext_resource type="AudioStream" uid="uid://my5bpv0pf0xu" path="res://assets/audio/menu/THREE MINUTES ON HIGH - MENU - CONFIRMATION.wav" id="9_flqon"]
+[ext_resource type="AudioStream" uid="uid://bx8weo7ku0lhm" path="res://assets/audio/menu/THREE MINUTES ON HIGH - MENU - ESC & GO BACK.wav" id="10_rcqid"]
+[ext_resource type="AudioStream" uid="uid://1ihe451n48ue" path="res://assets/audio/menu/THREE MINUTES ON HIGH - MENU - HOVER.wav" id="11_1ajci"]
+[ext_resource type="AudioStream" uid="uid://d2d1nvwm4dxsb" path="res://assets/audio/menu/THREE MINUTES ON HIGH - THEME MUSIC.wav" id="12_7b55j"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -27,140 +23,81 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cok42")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.24313726, 0.24313726, 0.2627451, 1)
-
-[node name="Panel" type="Panel" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 470.0
-offset_top = 58.0
-offset_right = 673.0
-offset_bottom = 151.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_clurl")
-
-[node name="Label" type="Label" parent="Panel"]
-layout_mode = 0
-offset_left = 11.0
-offset_top = 30.0
-offset_right = 195.0
-offset_bottom = 64.0
-theme_override_colors/font_color = Color(0, 1, 1, 1)
-theme_override_font_sizes/font_size = 21
-text = "3 Minutes on High"
-
-[node name="GridContainer" type="GridContainer" parent="."]
-layout_mode = 0
-offset_left = 474.0
-offset_top = 170.0
-offset_right = 667.0
-offset_bottom = 418.0
-columns = 3
-
-[node name="Button" type="Button" parent="GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_colors/font_hover_color = Color(0.02745098, 0.8, 0.8117647, 1)
-text = "1"
-
-[node name="Button2" type="Button" parent="GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_colors/font_hover_color = Color(0.02745098, 0.8, 0.8117647, 1)
-text = "2"
-
-[node name="Button3" type="Button" parent="GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_colors/font_hover_color = Color(0.02745098, 0.8, 0.8117647, 1)
-text = "3"
-
-[node name="Button4" type="Button" parent="GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_colors/font_hover_color = Color(0.02745098, 0.8, 0.8117647, 1)
-text = "4"
-
-[node name="Button5" type="Button" parent="GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_colors/font_hover_color = Color(0.02745098, 0.8, 0.8117647, 1)
-text = "5"
-
-[node name="Button6" type="Button" parent="GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_colors/font_hover_color = Color(0.02745098, 0.8, 0.8117647, 1)
-text = "6"
-
-[node name="Button7" type="Button" parent="GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_colors/font_hover_color = Color(0.02745098, 0.8, 0.8117647, 1)
-text = "7"
-
-[node name="Button8" type="Button" parent="GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_colors/font_hover_color = Color(0.02745098, 0.8, 0.8117647, 1)
-text = "8"
-
-[node name="Button9" type="Button" parent="GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_colors/font_hover_color = Color(0.02745098, 0.8, 0.8117647, 1)
-text = "9"
-
-[node name="Button10" type="Button" parent="GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_colors/font_hover_color = Color(0.02745098, 0.8, 0.8117647, 1)
-text = "0"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 476.0
-offset_top = 483.0
-offset_right = 669.0
-offset_bottom = 532.0
-
-[node name="StartButton" type="Button" parent="HBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/normal = SubResource("StyleBoxFlat_cok42")
-text = "Start"
-
-[node name="QuitButton" type="Button" parent="HBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/normal = SubResource("StyleBoxFlat_8f8xy")
-text = "Quit"
-
-[node name="MenuBackground" type="Sprite2D" parent="."]
-position = Vector2(639, 362)
+offset_right = 40.0
+offset_bottom = 40.0
 texture = ExtResource("2_wu84c")
 
-[node name="QuitButton" type="Sprite2D" parent="."]
-position = Vector2(803, 620)
-texture = ExtResource("3_8ln24")
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -42.5
+offset_right = 300.0
+offset_bottom = 42.5
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="StartButton" type="Sprite2D" parent="."]
-position = Vector2(422, 622)
-texture = ExtResource("4_rtw2f")
+[node name="AudioLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_rcqid")
+theme_override_font_sizes/font_size = 32
+text = "audio control"
+horizontal_alignment = 1
+
+[node name="VolumeSlider" type="HSlider" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = -40.0
+max_value = 0.0
+step = 0.5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -332.0
+offset_top = -220.0
+offset_right = 332.0
+offset_bottom = -120.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 64
+
+[node name="StartButton" type="TextureButton" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("4_rtw2f")
+texture_pressed = ExtResource("3_rtw2f")
+texture_hover = ExtResource("4_oa1go")
+
+[node name="QuitButton" type="TextureButton" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("3_8ln24")
+texture_pressed = ExtResource("7_tbmy8")
+texture_hover = ExtResource("8_jk1qb")
+
+[node name="ConfirmSfx" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("9_flqon")
+
+[node name="BackSfx" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("10_rcqid")
+
+[node name="HoverSfx" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("11_1ajci")
+
+[node name="ThemeMusic" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("12_7b55j")

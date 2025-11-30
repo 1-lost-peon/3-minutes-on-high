@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://vwbatgofwwki"]
 
 [ext_resource type="Script" uid="uid://nj0uhvalov6w" path="res://source/door.gd" id="1_hpvv5"]
-[ext_resource type="Texture2D" uid="uid://bxwnwa4p6nl0u" path="res://assets/sprites/level_sprites.png" id="3_83dcw"]
+[ext_resource type="Texture2D" uid="uid://bxwnwa4p6nl0u" path="res://assets/sprites/level/level_sprites.png" id="3_83dcw"]
 [ext_resource type="Material" uid="uid://0dboy0o7odrr" path="res://source/shader/outline_material.tres" id="4_la1wf"]
 [ext_resource type="PackedScene" uid="uid://uwoeisn62r5h" path="res://scenes/player_detection_area_2d.tscn" id="5_18pbm"]
 [ext_resource type="PackedScene" uid="uid://xqpi82yby68t" path="res://scenes/interaction_text.tscn" id="6_q5w8r"]

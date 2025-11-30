@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://85dptkfgl63"]
 
 [ext_resource type="Script" uid="uid://08jtq3sklkrg" path="res://source/barricade.gd" id="1_k4dkl"]
-[ext_resource type="Texture2D" uid="uid://c6q33js31kocx" path="res://assets/sprites/barricade.png" id="2_wwsqi"]
+[ext_resource type="Texture2D" uid="uid://c6q33js31kocx" path="res://assets/sprites/level/barricade.png" id="2_wwsqi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wwsqi"]
 size = Vector2(20, 30)

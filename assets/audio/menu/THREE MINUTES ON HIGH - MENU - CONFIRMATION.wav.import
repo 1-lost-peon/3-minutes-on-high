@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://my5bpv0pf0xu"
+path="res://.godot/imported/THREE MINUTES ON HIGH - MENU - CONFIRMATION.wav-80417a2a1350dd98d61df5d872a5a63d.sample"
+
+[deps]
+
+source_file="res://assets/audio/menu/THREE MINUTES ON HIGH - MENU - CONFIRMATION.wav"
+dest_files=["res://.godot/imported/THREE MINUTES ON HIGH - MENU - CONFIRMATION.wav-80417a2a1350dd98d61df5d872a5a63d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

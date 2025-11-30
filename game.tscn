@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://bfdi7ko7mp5b8"]
+
+[ext_resource type="Script" uid="uid://c3lntjje8klt3" path="res://scenes/game.gd" id="1_iywne"]
+[ext_resource type="PackedScene" uid="uid://c3fwmcj1en1ph" path="res://scenes/main_level.tscn" id="4_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://ckitdvv62o4s5" path="res://scenes/enemy.tscn" id="6_gee14"]
+[ext_resource type="PackedScene" uid="uid://d0qv3i4oxed4y" path="res://scenes/hud_canvas_layer.tscn" id="6_p57ef"]
+[ext_resource type="Script" uid="uid://dr3lc1vwf2ff" path="res://source/pause.gd" id="7_u5sy4"]
+
+[node name="Game" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_iywne")
+
+[node name="HUDCanvasLayer" parent="." instance=ExtResource("6_p57ef")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Pause" type="Control" parent="CanvasLayer"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("7_u5sy4")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Pause"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MainLevel" parent="." instance=ExtResource("4_lbhrr")]
+
+[node name="Enemy" parent="." groups=["enemy"] instance=ExtResource("6_gee14")]
+z_index = 1
+position = Vector2(47, 1457)
+
+[node name="Enemy2" parent="." groups=["enemy"] instance=ExtResource("6_gee14")]
+z_index = 1
+position = Vector2(1004, 1458)

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://tm6hbm8ikay8" path="res://source/enemy_door.gd" id="1_ydmv2"]
 [ext_resource type="PackedScene" uid="uid://c47f4bddmrxyn" path="res://scenes/enemy_detection_area_2d.tscn" id="2_ydmv2"]
-[ext_resource type="Texture2D" uid="uid://bnhxi2pdygry5" path="res://assets/sprites/enemy_door.png" id="3_8sab6"]
+[ext_resource type="Texture2D" uid="uid://bnhxi2pdygry5" path="res://assets/sprites/level/enemy_door.png" id="3_8sab6"]
 [ext_resource type="PackedScene" uid="uid://xqpi82yby68t" path="res://scenes/interaction_text.tscn" id="6_ok02g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_83dcw"]
