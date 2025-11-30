@@ -35,16 +35,19 @@ offset_bottom = 40.0
 
 [node name="MainLevel" parent="." instance=ExtResource("4_vef74")]
 
-[node name="SpawnerNode" parent="." groups=["enemy_spawner"] instance=ExtResource("6_eow3j")]
+[node name="SpawnerNodes" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="SpawnerNode1" parent="SpawnerNodes" groups=["enemy_spawner"] instance=ExtResource("6_eow3j")]
 position = Vector2(47, 1647)
 
-[node name="SpawnerNode2" parent="." groups=["enemy_spawner"] instance=ExtResource("6_eow3j")]
+[node name="SpawnerNode2" parent="SpawnerNodes" groups=["enemy_spawner"] instance=ExtResource("6_eow3j")]
 position = Vector2(1013, 1647)
 
-[node name="SpawnerNode3" parent="." groups=["enemy_spawner"] instance=ExtResource("6_eow3j")]
+[node name="SpawnerNode3" parent="SpawnerNodes" groups=["enemy_spawner"] instance=ExtResource("6_eow3j")]
 position = Vector2(-243, 556)
 
-[node name="SpawnerNode4" parent="." groups=["enemy_spawner"] instance=ExtResource("6_eow3j")]
+[node name="SpawnerNode4" parent="SpawnerNodes" groups=["enemy_spawner"] instance=ExtResource("6_eow3j")]
 position = Vector2(1098, -433)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
