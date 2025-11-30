@@ -1,6 +1,8 @@
 @icon("uid://bk3qswx4ngrin")
 class_name Player extends CharacterBody2D
 
+signal died
+
 enum PlayerState {
 	IDLE,
 	WALK,
@@ -33,6 +35,9 @@ const MAX_AMMO := 30
 @onready var attack_timer: Timer = $AttackTimer
 @onready var attack_cd_label: Label = $Container/AttackCDLabel
 @onready var ammo_label: Label = $Container/AmmoLabel
+@onready var animated_sprite_2d = $AnimatedSprite2D
+@onready var death_sfx = $DeathSfx
+@onready var injured_sfx = $InjuredSfx
 
 @onready var hp : int = self.max_hp
 
@@ -47,7 +52,7 @@ var current_state: PlayerState = PlayerState.IDLE:
 
 
 func change_state(new_state):
-	print("Current: %s, new: %s" % [current_state, new_state])
+	#print("Current: %s, new: %s" % [current_state, new_state])
 	state_label.text = "State: %s"  % str(PlayerState.keys()[new_state])
 	
 	current_state = new_state
@@ -91,6 +96,8 @@ func _physics_process(delta: float) -> void:
 		attack(input_attack_direction)
 
 func take_damage(value):
+	injured_sfx.play()
+	animated_sprite_2d.play("hurt_front")
 	if current_state == PlayerState.DEAD:
 		return
 	
@@ -101,14 +108,21 @@ func take_damage(value):
 		current_state = PlayerState.DEAD
 
 func _idle_update(_delta):
+	animated_sprite_2d.play("idle_front")
 	var input_direction = Input.get_vector(&"move_left", &"move_right", &"move_up", &"move_down")
 	if input_direction != Vector2.ZERO:
 		current_state = PlayerState.WALK
 	
 func _dead_update(_delta):
-	return
+	animated_sprite_2d.play("death")
+	$CollisionShape2D.disabled = true
+	await animated_sprite_2d.animation_finished
+	await death_sfx.play()
+	died.emit()
+	#queue_free()
 
 func _walk_update(_delta):
+	animated_sprite_2d.play("walk_front")
 	var input_direction = Input.get_vector(&"move_left", &"move_right", &"move_up", &"move_down")
 	
 	if input_direction == Vector2.ZERO:

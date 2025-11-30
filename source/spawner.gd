@@ -52,11 +52,6 @@ func _spawn() -> void:
 		_weak_refs.push_back(weakref(spawned_node))
 		_spawned_entities += 1
 		
-		print("Weak Refs")
-		print(_weak_refs)
-		print("Spawned Entities")
-		print(_spawned_entities)
-		
 		# Check count and quit looping if living count is maximum.
 		if not _can_spawn():
 			break
