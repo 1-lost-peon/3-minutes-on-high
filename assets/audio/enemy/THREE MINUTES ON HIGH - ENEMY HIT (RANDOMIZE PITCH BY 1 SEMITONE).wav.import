@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dc7ibipxmtxyg"
+path="res://.godot/imported/THREE MINUTES ON HIGH - ENEMY HIT (RANDOMIZE PITCH BY 1 SEMITONE).wav-31a8632ca9642ebf9411e4e5ab34e9ef.sample"
+
+[deps]
+
+source_file="res://assets/audio/enemy/THREE MINUTES ON HIGH - ENEMY HIT (RANDOMIZE PITCH BY 1 SEMITONE).wav"
+dest_files=["res://.godot/imported/THREE MINUTES ON HIGH - ENEMY HIT (RANDOMIZE PITCH BY 1 SEMITONE).wav-31a8632ca9642ebf9411e4e5ab34e9ef.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,16 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://bfdi7ko7mp5b8"]
+[gd_scene load_steps=8 format=3 uid="uid://bfdi7ko7mp5b8"]
 
-[ext_resource type="Script" uid="uid://c3lntjje8klt3" path="res://scenes/game.gd" id="1_iywne"]
-[ext_resource type="PackedScene" uid="uid://c3fwmcj1en1ph" path="res://scenes/main_level.tscn" id="4_lbhrr"]
-[ext_resource type="PackedScene" uid="uid://ckitdvv62o4s5" path="res://scenes/enemy.tscn" id="6_gee14"]
-[ext_resource type="PackedScene" uid="uid://d0qv3i4oxed4y" path="res://scenes/hud_canvas_layer.tscn" id="6_p57ef"]
-[ext_resource type="Script" uid="uid://dr3lc1vwf2ff" path="res://source/pause.gd" id="7_u5sy4"]
+[ext_resource type="Script" uid="uid://c3lntjje8klt3" path="res://scenes/game.gd" id="1_ryrav"]
+[ext_resource type="PackedScene" uid="uid://d0qv3i4oxed4y" path="res://scenes/hud_canvas_layer.tscn" id="2_eow3j"]
+[ext_resource type="Script" uid="uid://dr3lc1vwf2ff" path="res://source/pause.gd" id="3_j5wjh"]
+[ext_resource type="PackedScene" uid="uid://c3fwmcj1en1ph" path="res://scenes/main_level.tscn" id="4_vef74"]
+[ext_resource type="PackedScene" uid="uid://5vgwn3lp7vle" path="res://scenes/spawner_node.tscn" id="6_eow3j"]
+[ext_resource type="PackedScene" uid="uid://t4pnv7ecixrb" path="res://scenes/intro.tscn" id="6_mfdv2"]
+[ext_resource type="AudioStream" uid="uid://b5dmddts77oox" path="res://assets/audio/THREE MINUTES ON HIGH - GAMEPLAY 1.wav" id="7_eow3j"]
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
-script = ExtResource("1_iywne")
+script = ExtResource("1_ryrav")
 
-[node name="HUDCanvasLayer" parent="." instance=ExtResource("6_p57ef")]
+[node name="HUDCanvasLayer" parent="." instance=ExtResource("2_eow3j")]
+
+[node name="Intro" parent="HUDCanvasLayer" instance=ExtResource("6_mfdv2")]
+unique_name_in_owner = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 visible = false
@@ -21,19 +26,27 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("7_u5sy4")
+script = ExtResource("3_j5wjh")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/Pause"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="MainLevel" parent="." instance=ExtResource("4_lbhrr")]
+[node name="MainLevel" parent="." instance=ExtResource("4_vef74")]
 
-[node name="Enemy" parent="." groups=["enemy"] instance=ExtResource("6_gee14")]
-z_index = 1
-position = Vector2(47, 1457)
+[node name="SpawnerNode" parent="." groups=["enemy_spawner"] instance=ExtResource("6_eow3j")]
+position = Vector2(47, 1647)
 
-[node name="Enemy2" parent="." groups=["enemy"] instance=ExtResource("6_gee14")]
-z_index = 1
-position = Vector2(1004, 1458)
+[node name="SpawnerNode2" parent="." groups=["enemy_spawner"] instance=ExtResource("6_eow3j")]
+position = Vector2(1013, 1647)
+
+[node name="SpawnerNode3" parent="." groups=["enemy_spawner"] instance=ExtResource("6_eow3j")]
+position = Vector2(-243, 556)
+
+[node name="SpawnerNode4" parent="." groups=["enemy_spawner"] instance=ExtResource("6_eow3j")]
+position = Vector2(1098, -433)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_eow3j")
+autoplay = true

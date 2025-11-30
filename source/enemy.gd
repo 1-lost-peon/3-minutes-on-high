@@ -2,6 +2,8 @@
 extends CharacterBody2D
 class_name Enemy
 
+signal died
+
 enum EnemyState {
 	WALK,
 	DEAD,
@@ -11,7 +13,11 @@ enum EnemyState {
 
 @onready var state_label: Label = $Container/StateLabel
 @onready var health_label: Label = $Container/HealthLabel
-@onready var sprite_2d: Sprite2D = $Sprite2D
+#@onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var animated_sprite_2d = $AnimatedSprite2D
+@onready var noise_sfx = $NoiseSfx
+@onready var explode_sfx = $ExplodeSfx
+@onready var noise_timer = $NoiseTimer
 
 @export var health : int = 2 :
 	set(value):
@@ -30,6 +36,9 @@ enum EnemyState {
 ## Damage of the single attack.
 @export var attack_damage : float = 2.0
 
+@export var noise_min_wait := 2.0
+@export var noise_max_wait := 5.0
+
 var current_state: EnemyState = EnemyState.WALK:
 	set = change_state
 
@@ -37,6 +46,8 @@ var _player_ref : Player = null
 
 func _ready() -> void:
 	_player_ref = get_tree().get_first_node_in_group("player")
+	_reset_noise_timer()
+	noise_timer.timeout.connect(_on_noise_timer_timeout)
 
 func change_state(new_state):
 	#print("Current: %s, new: %s" % [current_state, new_state])
@@ -59,9 +70,19 @@ func take_damage(value):
 		_player_ref.hp += 3
 	
 func _dead_update(_delta):
-	return
+	animated_sprite_2d.play("explode")
+	$CollisionShape2D.disabled = true
+	await animated_sprite_2d.animation_finished
+	explode_sfx.play()
+	died.emit()
+	queue_free()
 
 func _walk_update(_delta):
+	if health == 2:
+		animated_sprite_2d.play("walk")
+	else:
+		animated_sprite_2d.play("injured")
+		
 	if not _player_ref:
 		return
 	navigation_agent_2d.target_position = _player_ref.global_position
@@ -89,10 +110,10 @@ func _attack_update(_delta):
 	# Disable physics process to hold state processing, this will result in running attack update for once.
 	set_physics_process(false)
 	
-	tween.tween_property(sprite_2d, "self_modulate", Color.RED, attack_duration_secs * 0.66)
-	tween.tween_callback(_damage_player)
-	tween.tween_property(sprite_2d, "self_modulate", Color.WHITE, attack_duration_secs * 0.33)
-	
+	#tween.tween_property(sprite_2d, "self_modulate", Color.RED, attack_duration_secs * 0.66)
+	#tween.tween_callback(_damage_player)
+	#tween.tween_property(sprite_2d, "self_modulate", Color.WHITE, attack_duration_secs * 0.33)
+	#
 	# Change state back to walk and enable physics process to reprocess states.
 	tween.tween_callback(func(): current_state = EnemyState.WALK)
 	tween.tween_callback(set_physics_process.bind(true))
@@ -103,4 +124,14 @@ func _damage_player() -> void:
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
 	velocity = safe_velocity
-	move_and_slide()
+	if current_state != EnemyState.DEAD:
+		move_and_slide()
+		
+func _on_noise_timer_timeout() -> void:
+	if !noise_sfx.playing:
+		noise_sfx.play()
+	_reset_noise_timer()
+
+func _reset_noise_timer() -> void:
+	noise_timer.wait_time = randf_range(noise_min_wait, noise_max_wait)
+	noise_timer.start()

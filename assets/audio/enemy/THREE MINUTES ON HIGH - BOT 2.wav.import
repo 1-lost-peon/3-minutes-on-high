@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://okj3x278jhql"
+path="res://.godot/imported/THREE MINUTES ON HIGH - BOT 2.wav-8a747b458246d859e246014e8d826d7a.sample"
+
+[deps]
+
+source_file="res://assets/audio/enemy/THREE MINUTES ON HIGH - BOT 2.wav"
+dest_files=["res://.godot/imported/THREE MINUTES ON HIGH - BOT 2.wav-8a747b458246d859e246014e8d826d7a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

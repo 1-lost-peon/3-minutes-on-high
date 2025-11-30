@@ -1,12 +1,27 @@
 extends Node2D
 
-var player_ref: Player
+@onready var player_ref: Player = get_tree().get_first_node_in_group("player")
+
+var game_started := false
 
 func _ready():
-	DifficultyTracker.reset_difficulty()
-	player_ref = get_tree().get_first_node_in_group("player")
-	player_ref.fill_ammo_full()
-	player_ref.reset_hp()
+	%Intro.start_game.connect(_on_start_game)
+	_reset_player()
+	_reset_level()
 
-func _process(delta):
-	pass
+func _process(delta: float) -> void:
+	if !game_started:
+		return
+	# actual gameplay update here
+
+func _reset_player() -> void:
+	if player_ref:
+		player_ref.fill_ammo_full()
+		player_ref.reset_hp()
+
+func _reset_level():
+	DifficultyTracker.reset_difficulty()
+
+func _on_start_game() -> void:
+	game_started = true
+	# enable spawns, timers, etc. here, if needed
