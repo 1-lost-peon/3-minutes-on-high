@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://dmhh7h3xot1lw"]
+[gd_scene load_steps=61 format=3 uid="uid://dmhh7h3xot1lw"]
 
 [ext_resource type="Script" uid="uid://b6hjdys0r6luq" path="res://source/player.gd" id="1_onrkg"]
 [ext_resource type="PackedScene" uid="uid://b8kt0rrxbr81x" path="res://scenes/bullets.tscn" id="2_i3pqv"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bep8alk4aj6nf" path="res://assets/sprites/player/Player_walk_SS.png" id="10_fulsm"]
 [ext_resource type="AudioStream" uid="uid://e6rqxaapsgso" path="res://assets/audio/player/THREE MINUTES ON HIGH - CHARACTER - DEATH.wav" id="13_f1ej7"]
 [ext_resource type="AudioStream" uid="uid://bj4rsrcm022gi" path="res://assets/audio/player/THREE MINUTES ON HIGH - CHARACTER - HIT.wav" id="14_oprun"]
+[ext_resource type="AudioStream" uid="uid://r5ygoui4en3a" path="res://assets/audio/player/THREE MINUTES ON HIGH - CHARACTER FIRE.wav" id="15_oprun"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4r5pv"]
 atlas = ExtResource("3_d2wvv")
@@ -199,7 +200,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_i4ail")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_back",
 "speed": 6.0
 }, {
@@ -212,10 +213,19 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_l71n6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l71n6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l71n6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ni07")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_front",
-"speed": 6.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -233,7 +243,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qfm1y")
 }],
-"loop": true,
+"loop": false,
 "name": &"death",
 "speed": 8.0
 }, {
@@ -250,7 +260,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pf23h")
 }],
-"loop": true,
+"loop": false,
 "name": &"hurt_back",
 "speed": 8.0
 }, {
@@ -267,7 +277,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_gl8cc")
 }],
-"loop": true,
+"loop": false,
 "name": &"hurt_front",
 "speed": 8.0
 }, {
@@ -374,7 +384,7 @@ speed = 300.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8svfe")
-animation = &"death"
+animation = &"walk_front"
 autoplay = "idle_front"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -434,4 +444,8 @@ stream = ExtResource("13_f1ej7")
 [node name="InjuredSfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_oprun")
 
+[node name="AttackSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_oprun")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="HealthTimer" to="." method="_on_health_drain_timer_timeout"]

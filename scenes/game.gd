@@ -8,6 +8,7 @@ var game_started := false
 var wave_number: int = 1
 var wave_in_progress := false
 var enemies_alive: int = 0
+var game_over = false
 
 @export var base_enemies_per_wave := 5
 @export var enemies_per_wave_growth := 3
@@ -18,6 +19,17 @@ func _ready():
 	_reset_player()
 	_reset_level()
 	_connect_spawners()
+	if player_ref:
+		player_ref.died.connect(_on_player_died)
+
+func _unhandled_input(event: InputEvent) -> void:
+	if game_over == true:
+		if event.is_action_pressed("interact"):
+			get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+
+func _on_player_died() -> void:
+	$HUDCanvasLayer/GameOver.visible = true
+	game_over = true
 
 func _process(delta: float) -> void:
 	if !game_started:

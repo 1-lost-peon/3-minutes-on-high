@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="3 Minutes on High"
-run/main_scene="uid://bfdi7ko7mp5b8"
+run/main_scene="uid://dbkhw8j2t2t0b"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 
 [autoload]

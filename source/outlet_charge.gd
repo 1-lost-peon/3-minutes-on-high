@@ -50,7 +50,7 @@ func _physics_process(delta: float) -> void:
 		holding = false
 		var player_ref := get_tree().get_first_node_in_group("player") as Player
 		player_ref.ammo.push_front(ammo_type)
-		player_ref.hp -= 5
+		player_ref.hp -= 2
 		hold_progress = 0.0
 
 		

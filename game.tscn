@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://bfdi7ko7mp5b8"]
+[gd_scene load_steps=9 format=3 uid="uid://bfdi7ko7mp5b8"]
 
 [ext_resource type="Script" uid="uid://c3lntjje8klt3" path="res://scenes/game.gd" id="1_ryrav"]
 [ext_resource type="PackedScene" uid="uid://d0qv3i4oxed4y" path="res://scenes/hud_canvas_layer.tscn" id="2_eow3j"]
 [ext_resource type="Script" uid="uid://dr3lc1vwf2ff" path="res://source/pause.gd" id="3_j5wjh"]
-[ext_resource type="PackedScene" uid="uid://c3fwmcj1en1ph" path="res://scenes/main_level.tscn" id="4_vef74"]
+[ext_resource type="PackedScene" uid="uid://d1lxvsloeo1qg" path="res://scenes/backup_level.tscn" id="5_eow3j"]
 [ext_resource type="PackedScene" uid="uid://5vgwn3lp7vle" path="res://scenes/spawner_node.tscn" id="6_eow3j"]
 [ext_resource type="PackedScene" uid="uid://t4pnv7ecixrb" path="res://scenes/intro.tscn" id="6_mfdv2"]
 [ext_resource type="AudioStream" uid="uid://b5dmddts77oox" path="res://assets/audio/THREE MINUTES ON HIGH - GAMEPLAY 1.wav" id="7_eow3j"]
+[ext_resource type="PackedScene" uid="uid://145am1dgw36o" path="res://scenes/game_over.tscn" id="8_j5wjh"]
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
@@ -16,6 +17,9 @@ script = ExtResource("1_ryrav")
 
 [node name="Intro" parent="HUDCanvasLayer" instance=ExtResource("6_mfdv2")]
 unique_name_in_owner = true
+
+[node name="GameOver" parent="HUDCanvasLayer" instance=ExtResource("8_j5wjh")]
+visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 visible = false
@@ -33,7 +37,7 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="MainLevel" parent="." instance=ExtResource("4_vef74")]
+[node name="BackupLevel" parent="." instance=ExtResource("5_eow3j")]
 
 [node name="SpawnerNodes" type="Node" parent="."]
 unique_name_in_owner = true

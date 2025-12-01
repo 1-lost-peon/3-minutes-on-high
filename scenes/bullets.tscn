@@ -1,10 +1,67 @@
-[gd_scene load_steps=4 format=3 uid="uid://b8kt0rrxbr81x"]
+[gd_scene load_steps=13 format=3 uid="uid://b8kt0rrxbr81x"]
 
 [ext_resource type="Script" uid="uid://bocx6qpegtv7e" path="res://source/bullets.gd" id="1_daqjf"]
 [ext_resource type="Texture2D" uid="uid://dny3mrxsqwllq" path="res://assets/sprites/attacks/bullet.png" id="2_i6nwq"]
+[ext_resource type="Texture2D" uid="uid://dyhx37koelur4" path="res://assets/sprites/attacks/Attack_green_2SS.png" id="3_an5t8"]
+[ext_resource type="Texture2D" uid="uid://ppacxr80mm61" path="res://assets/sprites/attacks/Attack_green_Hit_2SS.png" id="4_pl5fx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_webx2"]
 radius = 16.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nahw1"]
+atlas = ExtResource("3_an5t8")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dcste"]
+atlas = ExtResource("3_an5t8")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ua4g"]
+atlas = ExtResource("3_an5t8")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ahvlf"]
+atlas = ExtResource("4_pl5fx")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_056v1"]
+atlas = ExtResource("4_pl5fx")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uxecd"]
+atlas = ExtResource("4_pl5fx")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ti8d8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nahw1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dcste")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ua4g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ahvlf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_056v1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uxecd")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 6.0
+}]
 
 [node name="Bullets" type="Area2D"]
 collision_layer = 2
@@ -15,6 +72,11 @@ script = ExtResource("1_daqjf")
 shape = SubResource("CircleShape2D_webx2")
 
 [node name="Bullet" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("2_i6nwq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ti8d8")
+autoplay = "default"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

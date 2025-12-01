@@ -38,6 +38,7 @@ const MAX_AMMO := 30
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var death_sfx = $DeathSfx
 @onready var injured_sfx = $InjuredSfx
+@onready var attack_sfx = $AttackSfx
 
 @onready var hp : int = self.max_hp
 
@@ -58,10 +59,12 @@ func change_state(new_state):
 	current_state = new_state
 
 func attack(attack_direction:Vector2):
+	attack_sfx.play()
 	var bullet = bullet_scene.instantiate()
 	add_sibling(bullet)
 	bullet.global_position = global_position
 	bullet.direction = attack_direction
+	bullet.rotation = attack_direction.angle() + PI
 	ammo.pop_back()
 	attack_timer.start()
 
@@ -69,6 +72,9 @@ func attack(attack_direction:Vector2):
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed(&'debug_hurt'):
 		take_damage(1)
+		
+	if hp <= 0:
+		current_state = PlayerState.DEAD
 		
 	var string_ammo = []
 	for a in ammo:
@@ -103,9 +109,6 @@ func take_damage(value):
 	
 	hp -= value
 	CameraAgent.add_trauma(value * shake_strength)
-	
-	if hp <= 0:
-		current_state = PlayerState.DEAD
 
 func _idle_update(_delta):
 	animated_sprite_2d.play("idle_front")
@@ -114,10 +117,9 @@ func _idle_update(_delta):
 		current_state = PlayerState.WALK
 	
 func _dead_update(_delta):
+	death_sfx.play()
 	animated_sprite_2d.play("death")
 	$CollisionShape2D.disabled = true
-	await animated_sprite_2d.animation_finished
-	await death_sfx.play()
 	died.emit()
 	#queue_free()
 

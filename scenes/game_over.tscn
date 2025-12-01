@@ -1,17 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://t4pnv7ecixrb"]
+[gd_scene load_steps=3 format=3 uid="uid://145am1dgw36o"]
 
-[ext_resource type="FontFile" uid="uid://cle5ju5lvn31d" path="res://assets/font/Cyberphont 2.0.ttf" id="1_ioskq"]
-[ext_resource type="Script" uid="uid://qckolvk8sem8" path="res://scenes/intro.gd" id="1_yjqpq"]
-[ext_resource type="AudioStream" uid="uid://my5bpv0pf0xu" path="res://assets/audio/menu/THREE MINUTES ON HIGH - MENU - CONFIRMATION.wav" id="3_4bx60"]
+[ext_resource type="FontFile" uid="uid://cle5ju5lvn31d" path="res://assets/font/Cyberphont 2.0.ttf" id="2_racf3"]
+[ext_resource type="AudioStream" uid="uid://my5bpv0pf0xu" path="res://assets/audio/menu/THREE MINUTES ON HIGH - MENU - CONFIRMATION.wav" id="3_7m3ot"]
 
-[node name="Intro" type="Control"]
+[node name="GameOver" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_yjqpq")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -29,19 +27,19 @@ size_flags_vertical = 4
 [node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("1_ioskq")
+theme_override_fonts/font = ExtResource("2_racf3")
 theme_override_font_sizes/font_size = 30
-text = "kill cop bots for more time."
+text = "game over"
 horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("1_ioskq")
+theme_override_fonts/font = ExtResource("2_racf3")
 theme_override_font_sizes/font_size = 20
 text = "spacebar to continue..."
 horizontal_alignment = 2
 
 [node name="ConfirmSfx" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
-stream = ExtResource("3_4bx60")
+stream = ExtResource("3_7m3ot")

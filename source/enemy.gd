@@ -35,7 +35,7 @@ enum EnemyState {
 @export var attack_duration_secs : float = 0.2
 
 ## Damage of the single attack.
-@export var attack_damage : float = 2.0
+@export var attack_damage : float = 30.0
 
 @export var noise_min_wait := 2.0
 @export var noise_max_wait := 5.0

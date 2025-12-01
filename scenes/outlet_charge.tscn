@@ -40,7 +40,7 @@ grow_vertical = 0
 theme_override_fonts/font = ExtResource("4_3aoxy")
 theme_override_font_sizes/font_size = 20
 text = "to charge - pay:
-5 SECONDS"
+two seconds"
 horizontal_alignment = 1
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
